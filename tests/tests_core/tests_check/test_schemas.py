@@ -33,22 +33,22 @@ def test_case_check_expression_invalid_length():
     
 def test_simple_check_expression_get_check_name():
     instance = SimpleCheckExpression(command='test_command')
-    assert instance.get_check_name() == 'Test Command'
+    assert instance.get_check_title() == 'Test command'
 
 
 def test_simple_check_expression_get_message_with_subject():
     instance = SimpleCheckExpression(command='test_command', subject=['column1', 'column2'])
-    assert instance.get_message() == 'Column(s) [\'column1\', \'column2\'] Test Command'
+    assert instance.get_check_message() == "Column(s) ['column1', 'column2'] test command"
 
 
 def test_simple_check_expression_get_message_with_arg_values():
     instance = SimpleCheckExpression(command='test_command', arg_values=[1, 2, 3])
-    assert instance.get_message() == 'The column Test Command [1, 2, 3]'
+    assert instance.get_check_message() == 'The column under validation test command [1, 2, 3]'
 
 
 def test_simple_check_expression_get_message_with_arg_columns():
     instance = SimpleCheckExpression(command='test_command', arg_columns=['col1', 'col2'])
-    assert instance.get_message() == 'The column Test Command [\'col1\', \'col2\']'
+    assert instance.get_check_message() == "The column under validation test command ['col1', 'col2']"
 
 
 def test_simple_check_expression_map_command():
@@ -80,7 +80,7 @@ def test_case_check_expression_get_check_name():
         check_case=CheckCases.CONJUNCTION,
         expressions=[simple_expr, simple_expr]
     )
-    assert case_expr.get_check_name() == 'Conjunction of Test Command, Test Command'
+    assert case_expr.get_check_title() == 'Test command and Test command'
 
 
 def test_case_check_expression_get_message():
@@ -90,8 +90,8 @@ def test_case_check_expression_get_message():
         check_case=CheckCases.CONJUNCTION,
         expressions=[simple_expr, simple_expr]
     )
-    assert case_expr.get_message() == (
-        'Column(s) [\'column1\'] Test Command, Column(s) [\'column1\'] Test Command'
+    assert case_expr.get_check_message() == (
+        'Column(s) "column1" test command and Column(s) "column1" test command'
     )
 
 

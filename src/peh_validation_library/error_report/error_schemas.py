@@ -10,3 +10,24 @@ class ExceptionSchema(BaseModel):
     error_traceback: str
     error_context: str | None = None
     error_source: str | None = None
+
+
+class ErrorSchema(BaseModel):
+    column_names: list[str] | str
+    row_ids: list[int]
+    idx_columns: list[str]
+    level: str
+    message: str
+    title: str
+
+
+class ErrorReportSchema(BaseModel):
+    name: str
+    errors: list[ErrorSchema]
+    total_errors: int
+    id: int
+
+
+class ErrorCollectorSchema(BaseModel):
+    error_reports: list[ErrorReportSchema] = []
+    exceptions: list[ExceptionSchema] = []

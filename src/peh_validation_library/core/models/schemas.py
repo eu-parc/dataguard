@@ -43,9 +43,9 @@ class CheckSchema(BaseModel):
         error_msg: str | None = None,
     ) -> CheckSchema:
         if not name:
-            name = check_command.get_check_name()
+            name = check_command.get_check_title()
         if not error_msg:
-            error_msg = check_command.get_message()
+            error_msg = check_command.get_check_message()
         args_ = check_command.get_args()
 
         if hasattr(check_command, 'check_case'):
@@ -90,10 +90,9 @@ class CheckSchema(BaseModel):
     def build(self):
         return pa.Check(
             self.fn,
-            name=self.name,
+            name=self.error_level.value,
             title=self.name,
             error=self.error_msg,
-            description=self.error_level.value,
             statistics={'args_': self.args_},
         )
 
