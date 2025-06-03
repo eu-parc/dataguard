@@ -18,21 +18,24 @@ class SimpleCheckExpression(BaseModel):
     arg_values: list[Any] | None = None
     arg_columns: list[str] | None = None
 
-    def get_check_name(self) -> str:
+    def get_check_title(self) -> str:
         try:
-            return self.command.replace('_', ' ').title()
+            return self.command.replace('_', ' ').capitalize()
         except AttributeError:
-            return self.command.__name__.replace('_', ' ').title()
+            return self.command.__name__.replace('_', ' ').capitalize()
 
-    def get_message(self) -> str:
-        msg = f'The column {self.get_check_name()}'
+    def get_check_message(self) -> str:
+        msg = f'The column under validation {self.get_check_title().lower()}'
 
         if self.subject:
-            msg = f'Column(s) {self.subject} {self.get_check_name()}'
+            msg = (
+                f'Column(s) {self.get_args_string(self.subject)} '
+                f'{self.get_check_title().lower()}'
+            )
         if self.arg_values:
-            msg += f' {self.arg_values}'
+            msg += f' {self.get_args_string(self.arg_values)}'
         elif self.arg_columns:
-            msg += f' {self.arg_columns}'
+            msg += f' {self.get_args_string(self.arg_columns)}'
         return msg
 
     def map_command(self) -> str:
@@ -48,6 +51,14 @@ class SimpleCheckExpression(BaseModel):
             args['arg_columns'] = self.arg_columns
         return args
 
+    @staticmethod
+    def get_args_string(args: list[Any]) -> str:
+        if not args:
+            return ''
+        if len(args) == 1:
+            return f'"{args[0]}"'
+        return args
+
 
 class CaseCheckExpression(BaseModel):
     check_case: CheckCases
@@ -55,14 +66,33 @@ class CaseCheckExpression(BaseModel):
         min_length=2, max_length=2
     )
 
-    def get_check_name(self) -> str:
-        return (
-            f'{str(self.check_case.name).title()} of '
-            f'{", ".join([e.get_check_name() for e in self.expressions])}'
-        )
+    def get_check_title(self) -> str:
+        match self.check_case:
+            case CheckCases.CONDITION:
+                return (
+                    f'When {self.expressions[0].get_check_title()}, Then '
+                    f'{self.expressions[1].get_check_title()}'
+                )
+            case CheckCases.CONJUNCTION:
+                return f'{" and ".join([e.get_check_title() for e in self.expressions])}'  # noqa: E501
+            case CheckCases.DISJUNCTION:
+                return f'{" or ".join([e.get_check_title() for e in self.expressions])}'  # noqa: E501
+            case _:
+                raise ValueError(f'Unknown check case: {self.check_case}')
 
-    def get_message(self) -> str:
-        return f'{", ".join([e.get_message() for e in self.expressions])}'
+    def get_check_message(self) -> str:
+        match self.check_case:
+            case CheckCases.CONDITION:
+                return (
+                    f'When {self.expressions[0].get_check_message()} Then '
+                    f'{self.expressions[1].get_check_message()}'
+                )
+            case CheckCases.CONJUNCTION:
+                return f'{" and ".join([e.get_check_message() for e in self.expressions])}'  # noqa: E501
+            case CheckCases.DISJUNCTION:
+                return f'{" or ".join([e.get_check_message() for e in self.expressions])}'  # noqa: E501
+            case _:
+                raise ValueError(f'Unknown check case: {self.check_case}')
 
     def get_args(self) -> dict[str, Any]:
         args = []

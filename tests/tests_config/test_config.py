@@ -71,14 +71,14 @@ def test_get_config():
     assert schema.columns['test_column'].nullable is False
     assert schema.columns['test_column'].unique is True
     assert schema.columns['test_column'].required is True
-    assert schema.columns['test_column'].checks[0].name == 'Condition of Is In, Is Equal To'
+    assert schema.columns['test_column'].checks[0].name == 'error'
 
     assert schema.columns['second_column'].name == 'second_column'
     assert schema.columns['second_column'].nullable is True
     assert schema.columns['second_column'].unique is False
     assert schema.columns['second_column'].required is False
-    assert schema.columns['second_column'].checks[0].name == 'Is Equal To'
-    assert schema.checks[0].name == 'Is In'
+    assert schema.columns['second_column'].checks[0].name == 'error'
+    assert schema.checks[0].name == 'error'
 
 
 def test_invalid_config_mapping():

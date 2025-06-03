@@ -1,16 +1,82 @@
 from functools import cache
 
+import pandera.polars as pa
+
+from peh_validation_library.error_report.error_schemas import (
+    ErrorCollectorSchema,
+    ErrorReportSchema,
+    ErrorSchema,
+    ExceptionSchema,
+)
+from peh_validation_library.error_report.utils import from_schema_error
+
 
 @cache
 class ErrorCollector:
+    COUNTER = 0
+
     def __init__(self):
-        self._errors = []
+        self.__errors = []
+        self.__exceptions = []
 
-    def add_error(self, error):
-        self._errors.append(error)
+    def add_errors(
+        self,
+        error: ExceptionSchema
+        | pa.errors.SchemaError
+        | pa.errors.SchemaErrors,  # noqa: E501
+    ) -> None:
+        if getattr(error, 'error_traceback', None):
+            self.__exceptions.append(error)
+            return
 
-    def get_errors(self):
-        return self._errors
+        errors = []
 
-    def clear_errors(self):
-        self._errors.clear()
+        if getattr(error, 'schema_errors', None):
+            idx_columns = error.schema.unique
+            for err in error.schema_errors:
+                column_names, row_ids = from_schema_error(err)
+
+                errors.append(
+                    ErrorSchema(
+                        column_names=column_names,
+                        row_ids=row_ids,
+                        idx_columns=idx_columns,
+                        level=err.check.name,
+                        message=err.check.error,
+                        title=err.check.title,
+                    )
+                )
+
+        else:
+            column_names, row_ids = from_schema_error(err)
+            errors.append(
+                ErrorSchema(
+                    column_names=column_names,
+                    row_ids=row_ids,
+                    idx_columns=error.schema.unique,
+                    level=error.schema.level,
+                    message=error.schema.message,
+                    title=error.schema.title,
+                )
+            )
+
+        if len(errors) > 0:
+            self.__errors.append(
+                ErrorReportSchema(
+                    name=error.schema.name,
+                    errors=errors,
+                    total_errors=len(errors),
+                    id=self.COUNTER,
+                )
+            )
+            self.COUNTER += len(errors)
+
+    def get_errors(self) -> ErrorCollectorSchema:
+        return ErrorCollectorSchema(
+            error_reports=self.__errors, exceptions=self.__exceptions
+        )
+
+    def clear_errors(self) -> None:
+        self.__errors.clear()
+        self.__exceptions.clear()
+        self.COUNTER = 0

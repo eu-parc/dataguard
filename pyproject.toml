@@ -29,6 +29,7 @@ dev = [
 line-length = 79
 src = ["src/peh_validation_library"]
 extend-exclude = ["tests", "scripts", "notebooks", "data"]
+target-version = "py310"
 
 [tool.ruff.lint]
 preview = true

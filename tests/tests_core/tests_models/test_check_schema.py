@@ -35,9 +35,9 @@ def test_get_schema_simple_check(check_command, subject, arg_values, arg_columns
         arg_columns=arg_columns
     )
 
-    expected_name = check_command.get_check_name()
+    expected_name = check_command.get_check_title()
     expected_args = check_command.get_args()
-    expected_error_msg = check_command.get_message()
+    expected_error_msg = check_command.get_check_message()
 
     check_schema = CheckSchema.get_schema(check_command)
     
@@ -58,9 +58,9 @@ def test_get_schema_simple_check_module():
         command=fake_check_fn,
     )
 
-    expected_name = check_command.get_check_name()
+    expected_name = check_command.get_check_title()
     expected_args = check_command.get_args()
-    expected_error_msg = check_command.get_message()
+    expected_error_msg = check_command.get_check_message()
 
     check_schema = CheckSchema.get_schema(check_command)
     
@@ -111,9 +111,9 @@ def test_get_schema_case_check(check_case, expressions):
         expressions=expressions
     )
 
-    expected_name = check_case.get_check_name()
+    expected_name = check_case.get_check_title()
     expected_args = check_case.get_args()
-    expected_error_msg = check_case.get_message()
+    expected_error_msg = check_case.get_check_message()
 
     check_schema = CheckSchema.get_schema(check_case)
 

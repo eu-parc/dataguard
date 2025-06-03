@@ -51,7 +51,7 @@ class Validator:
 
         except pa.errors.SchemaErrors as err:
             self.__logger.info('Collecting validation errors')
-            self.__error_collector.add_error(err)
+            self.__error_collector.add_errors(err)
         # Pandera not implemented for polars some lazy validation.
         # Run in again in eager mode to catch the error.
         # This is a workaround for the issue.
@@ -62,12 +62,12 @@ class Validator:
 
             except pa.errors.SchemaError as err:
                 self.__logger.warning('Collecting eager validation error')
-                self.__error_collector.add_error(err)
+                self.__error_collector.add_errors(err)
         except Exception as err:
             msg = f'Error validating dataframe: {err}'
             self.__logger.error(msg)
             error_traceback = traceback.format_exc()
-            self.__error_collector.add_error(
+            self.__error_collector.add_errors(
                 ExceptionSchema(
                     error_type=type(err).__name__,
                     error_message=str(err),
@@ -77,8 +77,6 @@ class Validator:
                     error_source=__name__,
                 )
             )
-        finally:
-            return self.__error_collector.get_errors()
 
     @classmethod
     def build_validator(
@@ -95,7 +93,7 @@ class Validator:
             msg = f'Error reading inputs: {err}'
             logger.error(msg)
             error_traceback = traceback.format_exc()
-            ErrorCollector().add_error(
+            ErrorCollector().add_errors(
                 ExceptionSchema(
                     error_type=type(err).__name__,
                     error_message=str(err),
