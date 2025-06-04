@@ -24,6 +24,10 @@ dev = [
     "pytest-cov>=6.1.1",
     "ruff>=0.11.8",
 ]
+docs = [
+    "mkdocs-material>=9.6.14",
+    "mkdocstrings[python]>=0.29.1",
+]
 
 [tool.ruff]
 line-length = 79
