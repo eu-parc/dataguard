@@ -30,6 +30,8 @@ jobs:
     - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
     
     - uses: actions/cache@v4
+      env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         key: mkdocs-material-${{ env.cache_id }}
         path: .cache 
