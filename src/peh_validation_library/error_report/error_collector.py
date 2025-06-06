@@ -13,8 +13,6 @@ from peh_validation_library.error_report.utils import from_schema_error
 
 @cache
 class ErrorCollector:
-    """ErrorCollector class for collecting errors during validation."""
-
     COUNTER = 0
 
     def __init__(self):
@@ -27,15 +25,6 @@ class ErrorCollector:
         | pa.errors.SchemaError
         | pa.errors.SchemaErrors,  # noqa: E501
     ) -> None:
-        """Adds errors to the collector.
-
-        Args:
-            error (ExceptionSchema | pa.errors.SchemaError | pa.errors.SchemaErrors): The error to add.
-
-        Returns:
-            None
-
-        """  # noqa: E501
         if getattr(error, 'error_traceback', None):
             self.__exceptions.append(error)
             return
@@ -83,18 +72,11 @@ class ErrorCollector:
             self.COUNTER += len(errors)
 
     def get_errors(self) -> ErrorCollectorSchema:
-        """Returns the collected errors and exceptions.
-
-        Returns:
-            ErrorCollectorSchema: A schema containing the collected errors and exceptions.
-
-        """  # noqa: E501
         return ErrorCollectorSchema(
             error_reports=self.__errors, exceptions=self.__exceptions
         )
 
     def clear_errors(self) -> None:
-        """Clears the collected errors and exceptions."""
         self.__errors.clear()
         self.__exceptions.clear()
         self.COUNTER = 0

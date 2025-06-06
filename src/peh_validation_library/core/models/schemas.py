@@ -26,17 +26,6 @@ from peh_validation_library.core.utils.mappers import (
 
 
 class CheckSchema(BaseModel):
-    """Schema for a validation check.
-
-    Attributes:
-        name (str): Name of the check.
-        fn (Callable): Function to execute the check.
-        args_ (Any | None): Arguments for the check function.
-        error_level (ErrorLevel): Level of error for the check.
-        error_msg (str): Error message for the check.
-
-    """
-
     name: str
     fn: Callable[[pa.PolarsData, Any], pl.LazyFrame]
     args_: Any | None
@@ -53,18 +42,6 @@ class CheckSchema(BaseModel):
         error_level: ErrorLevel = ErrorLevel.ERROR,
         error_msg: str | None = None,
     ) -> CheckSchema:
-        """Creates a CheckSchema instance from a check command.
-
-        Args:
-            check_command (SimpleCheckExpression | CaseCheckExpression): The check command to create the schema from.
-            name (str | None): Optional name for the check. If not provided, it will be derived from the command.
-            error_level (ErrorLevel): The level of error for the check.
-            error_msg (str | None): Optional error message for the check. If not provided, it will be derived from the command.
-
-        Returns:
-            CheckSchema: An instance of CheckSchema with the provided or derived values.
-
-        """  # noqa: E501
         if not name:
             name = check_command.get_check_title()
         if not error_msg:
@@ -121,18 +98,6 @@ class CheckSchema(BaseModel):
 
 
 class ColSchema(BaseModel):
-    """Schema for a DataFrame column.
-
-    Attributes:
-        id (str): Identifier for the column.
-        data_type (ValidationType): Data type of the column.
-        nullable (bool): Whether the column can contain null values.
-        unique (bool): Whether the column values must be unique.
-        required (bool): Whether the column is required.
-        checks (list[CheckSchema] | None): Optional list of checks to apply to the column.
-
-    """  # noqa: E501
-
     id: str
     data_type: ValidationType
     nullable: bool
@@ -157,17 +122,6 @@ class ColSchema(BaseModel):
 
 
 class DFSchema(BaseModel):
-    """Schema for a DataFrame.
-
-    Attributes:
-        name (str): Name of the DataFrame schema.
-        columns (list[ColSchema]): List of column schemas defining the DataFrame structure.
-        ids (list[str] | None): Optional list of unique identifiers for the DataFrame.
-        metadata (dict[str, Any] | None): Optional metadata for the DataFrame schema.
-        checks (list[CheckSchema] | None): Optional list of checks to apply to the DataFrame.
-
-    """  # noqa: E501
-
     name: str
     columns: list[ColSchema]
     ids: list[str] | None

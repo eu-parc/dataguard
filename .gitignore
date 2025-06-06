@@ -24,5 +24,3 @@ notebooks/cb24_quest_test.py
 notebooks/template_cb_24_lab.ipynb
 notebooks/template_cb_24_quest.ipynb
 notebooks/val_design_yaml_to_py.ipynb
-
-.vscode/

@@ -13,16 +13,6 @@ from peh_validation_library.core.utils.mappers import (
 
 
 class SimpleCheckExpression(BaseModel):
-    """Schema for a simple validation check expression.
-
-    Attributes:
-        command (str | Callable): The command or function to execute the check.
-        subject (list[str] | None): List of column names to apply the check on.
-        arg_values (list[Any] | None): List of values to pass as arguments to the command.
-        arg_columns (list[str] | None): List of column names to pass as arguments to the command.
-
-    """  # noqa: E501
-
     command: str | Callable[[pa.PolarsData, Any], pl.LazyFrame]
     subject: list[str] | None = None
     arg_values: list[Any] | None = None
@@ -71,14 +61,6 @@ class SimpleCheckExpression(BaseModel):
 
 
 class CaseCheckExpression(BaseModel):
-    """Schema for a case-based validation check expression.
-
-    Attributes:
-        check_case (CheckCases): The type of case for the check (e.g., CONDITION, CONJUNCTION, DISJUNCTION).
-        expressions (list[SimpleCheckExpression | CaseCheckExpression]): List of expressions to evaluate in the case.
-
-    """  # noqa: E501
-
     check_case: CheckCases
     expressions: list[SimpleCheckExpression | CaseCheckExpression] = Field(
         min_length=2, max_length=2

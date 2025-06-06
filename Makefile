@@ -1,5 +1,3 @@
-.PHONY: test lint format test-set serve
-
 SET ?=
 
 test:
@@ -13,6 +11,3 @@ format:
 
 test-set:
 	bash scripts/test_subset.sh $(SET)
-
-serve:
-	bash scripts/docs_serve.sh
