@@ -1,5 +1,5 @@
 import pytest
-from peh_validation_library.config.config_reader import ConfigReader
+from peh_validation_library.config.config_reader import get_df_schema
 from peh_validation_library.core.models.schemas import DFSchema
 
 import pandera.polars as pa
@@ -57,11 +57,10 @@ def test_get_config():
         ]
     }
 
-    conf = ConfigReader(conf_input)
-    result = conf.get_df_schema()
-    schema = result.build()
+    conf = get_df_schema(conf_input)
+    schema = conf.build()
 
-    assert isinstance(result, DFSchema)
+    assert isinstance(conf, DFSchema)
     assert isinstance(schema, pa.DataFrameSchema)
     assert schema.name == 'test_config'
     assert schema.metadata == {'meta_key': 'meta_value'}
@@ -113,11 +112,8 @@ def test_invalid_config_mapping():
         )
     }
 
-    
-    conf = ConfigReader(invalid_conf_input)
-
     with pytest.raises(RuntimeError) as err:
-        conf.get_df_schema()
+        get_df_schema(invalid_conf_input)
     
     assert "Error reading configuration:" in str(err.value)
 
@@ -169,10 +165,8 @@ def test_get_config_break_check():
         )
     }
 
-    conf = ConfigReader(conf_input)
-
     with pytest.raises(RuntimeError) as err:
-        conf.get_df_schema()
+        get_df_schema(conf_input)
 
     assert "Error reading configuration:" in str(err.value)
 
@@ -224,10 +218,8 @@ def test_get_config_validation_error():
         )
     }
 
-    conf = ConfigReader(conf_input)
-
     with pytest.raises(RuntimeError) as err:
-        conf.get_df_schema()
+        get_df_schema(conf_input)
 
     assert "Error reading configuration:" in str(err.value)
 

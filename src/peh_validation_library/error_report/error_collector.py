@@ -47,16 +47,28 @@ class ErrorCollector:
             for err in error.schema_errors:
                 column_names, row_ids = from_schema_error(err)
 
-                errors.append(
-                    ErrorSchema(
-                        column_names=column_names,
-                        row_ids=row_ids,
-                        idx_columns=idx_columns,
-                        level=err.check.name,
-                        message=err.check.error,
-                        title=err.check.title,
+                if not isinstance(err.check, str):
+                    errors.append(
+                        ErrorSchema(
+                            column_names=column_names,
+                            row_ids=row_ids,
+                            idx_columns=idx_columns,
+                            level=err.check.name,
+                            message=err.check.error,
+                            title=err.check.title,
+                        )
                     )
-                )
+                else:
+                    errors.append(
+                        ErrorSchema(
+                            column_names=column_names,
+                            row_ids=row_ids,
+                            idx_columns=idx_columns,
+                            level='error',
+                            message=err.check,
+                            title=err.check,
+                        )
+                    )
 
         else:
             column_names, row_ids = from_schema_error(err)
