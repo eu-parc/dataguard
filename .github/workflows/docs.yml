@@ -1,16 +1,15 @@
 name: DOCS
 
 on:
-  pull_request:
-    branches: [master]
-    types:
-      - closed
+  #pull_request:
+  #  branches: [master]
+  #  types:
+  #    - closed
+  push:
+    branches: ['*']
 
 permissions:
   contents: write
-  pages: write  
-  id-token: write  
-  actions: write
 
 jobs:
   docs:
@@ -34,7 +33,7 @@ jobs:
     
     - uses: actions/cache@v4
       env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         key: mkdocs-material-${{ env.cache_id }}
         path: .cache 
@@ -45,4 +44,6 @@ jobs:
       run: uv sync --locked --only-group docs
 
     - name: Run docs build
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: bash ./scripts/docs_build.sh

@@ -14,31 +14,23 @@ from peh_validation_library.core.models.schemas import (
 from peh_validation_library.core.utils.enums import ErrorLevel
 
 
-class ConfigReader:
-    def __init__(
-        self, config_input: Mapping[str, str | Sequence | Mapping]
-    ) -> None:
-        self.config_input = config_input
-
-    def get_df_schema(self) -> DFSchema:
-        try:
-            return DFSchema(
-                name=self.config_input['name'],
-                columns=parse_columns(self.config_input['columns']),
-                ids=(
-                    list(self.config_input['ids'])
-                    if 'ids' in self.config_input
-                    else None
-                ),
-                metadata=self.config_input.get('metadata', None),
-                checks=(
-                    parse_checks(self.config_input['checks'])
-                    if 'checks' in self.config_input
-                    else None
-                ),
-            )
-        except (KeyError, TypeError, ValidationError, IndexError) as err:
-            raise RuntimeError(f'Error reading configuration: {err}') from err
+def get_df_schema(
+    config_input: Mapping[str, str | Sequence | Mapping],
+) -> DFSchema:
+    try:
+        return DFSchema(
+            name=config_input['name'],
+            columns=parse_columns(config_input['columns']),
+            ids=(list(config_input['ids']) if 'ids' in config_input else None),
+            metadata=config_input.get('metadata', None),
+            checks=(
+                parse_checks(config_input['checks'])
+                if 'checks' in config_input
+                else None
+            ),
+        )
+    except (KeyError, TypeError, ValidationError, IndexError) as err:
+        raise RuntimeError(f'Error reading configuration: {err}') from err
 
 
 def parse_checks(

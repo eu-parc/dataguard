@@ -59,7 +59,7 @@ def test_build_validator_success(error_collector, fake_check_fn):
             {
             'id': 'second_column',
             'data_type': 'integer',
-            'nullable': True,
+            'nullable': False,
             'unique': False,
             'required': False,
             'checks': [
@@ -82,22 +82,17 @@ def test_build_validator_success(error_collector, fake_check_fn):
     }
 
     dataframe = {
-        "test_column": [1, 2, 3],
-        "second_column": [3, 2, 1]
+        "test_column": [1, 2, 3, None],
+        "second_column": [3, 2, 1, None]
     }
 
-    logger = logging.getLogger("test_logger")
-
-    validator = Validator.build_validator(
-        config=conf_input, dataframe=dataframe, logger=logger
-        )
+    validator = Validator.config_from_mapping(config=conf_input)
     
-    validator.validate()
+    validator.validate(dataframe)
     
     assert validator is not None
-    assert validator.dataframe is not None
-    assert validator.config is not None
-    assert len(error_collector.get_errors().error_reports[0].errors) == 4
+    assert validator.df_schema is not None
+    assert len(error_collector.get_errors().error_reports[0].errors) == 6
     
 
 def test_build_validator_error_handling(error_collector):
@@ -110,11 +105,7 @@ def test_build_validator_error_handling(error_collector):
         "col2": ["a", "b", "c"]
     }
     
-    logger = logging.getLogger("test_logger")
-
-    validator = Validator.build_validator(
-        config=config, dataframe=dataframe, logger=logger
-        )
+    validator = Validator.config_from_mapping(config=config)
     
     assert len(error_collector.get_errors().exceptions) == 1
     error = error_collector.get_errors().exceptions[0]
@@ -122,7 +113,7 @@ def test_build_validator_error_handling(error_collector):
     assert error.error_level.name == 'CRITICAL'
 
 
-def test_validator_validate_exception(error_collector):
+def test_validator_validate_exception(error_collector, fake_check_fn):
     conf_input = {
         'name': 'test_config',
         'columns': (
@@ -184,14 +175,9 @@ def test_validator_validate_exception(error_collector):
         "second_column": [3, 2, 1]
     }
     
-    logger = logging.getLogger("test_logger")
+    validator = Validator.config_from_mapping(config=conf_input)
 
-    validator = Validator.build_validator(
-        config=conf_input, dataframe=dataframe, logger=logger
-        )
-    
-    
-    validator.validate()
+    validator.validate(dataframe)
     
     assert len(error_collector.get_errors().exceptions) == 1
     assert len(error_collector.get_errors().error_reports) == 0
