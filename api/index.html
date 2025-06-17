@@ -1,0 +1,3880 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>API Reference - PEH Validation Library</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="PEH Validation Library" class="md-header__button md-logo" aria-label="PEH Validation Library" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PEH Validation Library
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/eu-parc/peh-validation-library" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    eu-parc/peh-validation-library
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="PEH Validation Library" class="md-nav__button md-logo" aria-label="PEH Validation Library" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    PEH Validation Library
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/eu-parc/peh-validation-library" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    eu-parc/peh-validation-library
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to PEH Validation Library
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator" class="md-nav__link">
+    <span class="md-ellipsis">
+      validator
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.config_from_mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      config_from_mapping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="config_from_mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.config_from_mapping(config)" class="md-nav__link">
+    <span class="md-ellipsis">
+      config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.config_from_mapping(collect_exceptions)" class="md-nav__link">
+    <span class="md-ellipsis">
+      collect_exceptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.config_from_mapping(logger)" class="md-nav__link">
+    <span class="md-ellipsis">
+      logger
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      validate
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="validate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.validate(dataframe)" class="md-nav__link">
+    <span class="md-ellipsis">
+      dataframe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.validate(lazy_validation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      lazy_validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.validate(collect_exceptions)" class="md-nav__link">
+    <span class="md-ellipsis">
+      collect_exceptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.validate(logger)" class="md-nav__link">
+    <span class="md-ellipsis">
+      logger
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.core.utils.enums" class="md-nav__link">
+    <span class="md-ellipsis">
+      enums
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.core.utils.enums.CheckCases" class="md-nav__link">
+    <span class="md-ellipsis">
+      CheckCases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.core.utils.enums.ErrorLevel" class="md-nav__link">
+    <span class="md-ellipsis">
+      ErrorLevel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.core.utils.enums.ValidationType" class="md-nav__link">
+    <span class="md-ellipsis">
+      ValidationType
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_collector" class="md-nav__link">
+    <span class="md-ellipsis">
+      error_collector
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_collector.ErrorCollector" class="md-nav__link">
+    <span class="md-ellipsis">
+      ErrorCollector
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ErrorCollector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_collector.ErrorCollector.add_errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_errors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="add_errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_collector.ErrorCollector.add_errors(error)" class="md-nav__link">
+    <span class="md-ellipsis">
+      error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_collector.ErrorCollector.clear_errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      clear_errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_collector.ErrorCollector.get_errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      error_schemas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_schemas.ErrorCollectorSchema" class="md-nav__link">
+    <span class="md-ellipsis">
+      ErrorCollectorSchema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_schemas.ErrorReportSchema" class="md-nav__link">
+    <span class="md-ellipsis">
+      ErrorReportSchema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_schemas.ErrorSchema" class="md-nav__link">
+    <span class="md-ellipsis">
+      ErrorSchema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_schemas.ExceptionSchema" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExceptionSchema
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator" class="md-nav__link">
+    <span class="md-ellipsis">
+      validator
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.config_from_mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      config_from_mapping
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="config_from_mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.config_from_mapping(config)" class="md-nav__link">
+    <span class="md-ellipsis">
+      config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.config_from_mapping(collect_exceptions)" class="md-nav__link">
+    <span class="md-ellipsis">
+      collect_exceptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.config_from_mapping(logger)" class="md-nav__link">
+    <span class="md-ellipsis">
+      logger
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      validate
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="validate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.validate(dataframe)" class="md-nav__link">
+    <span class="md-ellipsis">
+      dataframe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.validate(lazy_validation)" class="md-nav__link">
+    <span class="md-ellipsis">
+      lazy_validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.validate(collect_exceptions)" class="md-nav__link">
+    <span class="md-ellipsis">
+      collect_exceptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.validator.validator.Validator.validate(logger)" class="md-nav__link">
+    <span class="md-ellipsis">
+      logger
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.core.utils.enums" class="md-nav__link">
+    <span class="md-ellipsis">
+      enums
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.core.utils.enums.CheckCases" class="md-nav__link">
+    <span class="md-ellipsis">
+      CheckCases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.core.utils.enums.ErrorLevel" class="md-nav__link">
+    <span class="md-ellipsis">
+      ErrorLevel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.core.utils.enums.ValidationType" class="md-nav__link">
+    <span class="md-ellipsis">
+      ValidationType
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_collector" class="md-nav__link">
+    <span class="md-ellipsis">
+      error_collector
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_collector.ErrorCollector" class="md-nav__link">
+    <span class="md-ellipsis">
+      ErrorCollector
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ErrorCollector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_collector.ErrorCollector.add_errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_errors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="add_errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_collector.ErrorCollector.add_errors(error)" class="md-nav__link">
+    <span class="md-ellipsis">
+      error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_collector.ErrorCollector.clear_errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      clear_errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_collector.ErrorCollector.get_errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      error_schemas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_schemas.ErrorCollectorSchema" class="md-nav__link">
+    <span class="md-ellipsis">
+      ErrorCollectorSchema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_schemas.ErrorReportSchema" class="md-nav__link">
+    <span class="md-ellipsis">
+      ErrorReportSchema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_schemas.ErrorSchema" class="md-nav__link">
+    <span class="md-ellipsis">
+      ErrorSchema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peh_validation_library.error_report.error_schemas.ExceptionSchema" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExceptionSchema
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="api-reference">API Reference</h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="peh_validation_library.validator.validator"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="peh_validation_library.validator.validator.Validator" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">Validator</span>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+
+        <p>Validator class for validating DataFrames against a defined schema.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/peh_validation_library/validator/validator.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Validator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validator class for validating DataFrames against a defined schema.&quot;&quot;&quot;</span>
+
+    <span class="n">error_collector</span> <span class="o">=</span> <span class="n">ErrorCollector</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">config_from_mapping</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Sequence</span> <span class="o">|</span> <span class="n">Mapping</span><span class="p">],</span>
+        <span class="n">collect_exceptions</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span> <span class="o">=</span> <span class="n">logger</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Validator</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a DFSchema from a configuration mapping.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            config (Mapping[str, str | Sequence | Mapping]): Configuration</span>
+<span class="sd">                mapping for the DataFrame schema.</span>
+<span class="sd">            collect_exceptions (bool, optional): Whether to collect exceptions</span>
+<span class="sd">                during the schema creation. Defaults to True.</span>
+<span class="sd">            logger (logging.Logger, optional): Logger instance for logging.</span>
+<span class="sd">                Defaults to the module logger.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            The command is either a user-defined function or a string that</span>
+<span class="sd">            maps to a function that will be used to validate the DataFrame.</span>
+
+<span class="sd">            The following commands are available:</span>
+
+<span class="sd">                &#39;is_equal_to&#39;,</span>
+<span class="sd">                &#39;is_equal_to_or_both_missing&#39;,</span>
+<span class="sd">                &#39;is_greater_than_or_equal_to&#39;,</span>
+<span class="sd">                &#39;is_greater_than&#39;,</span>
+<span class="sd">                &#39;is_less_than_or_equal_to&#39;,</span>
+<span class="sd">                &#39;is_less_than&#39;,</span>
+<span class="sd">                &#39;is_not_equal_to&#39;,</span>
+<span class="sd">                &#39;is_not_equal_to_and_not_both_missing&#39;,</span>
+<span class="sd">                &#39;is_unique&#39;,</span>
+<span class="sd">                &#39;is_duplicated&#39;,</span>
+<span class="sd">                &#39;is_in&#39;,</span>
+<span class="sd">                &#39;is_null&#39;,</span>
+<span class="sd">                &#39;is_not_null&#39;</span>
+
+<span class="sd">            &gt;&gt;&gt; config_input = {</span>
+<span class="sd">                    &quot;name&quot;: &quot;example_schema&quot;,</span>
+<span class="sd">                    &quot;columns&quot;: [</span>
+<span class="sd">                        {</span>
+<span class="sd">                            &quot;id&quot;: &quot;column1&quot;,</span>
+<span class="sd">                            &quot;data_type&quot;: &quot;integer&quot;,</span>
+<span class="sd">                            &quot;nullable&quot;: False,</span>
+<span class="sd">                            &quot;unique&quot;: True,</span>
+<span class="sd">                            &quot;required&quot;: True,</span>
+<span class="sd">                            &quot;checks&quot;: [</span>
+<span class="sd">                                {</span>
+<span class="sd">                                    &quot;command&quot;: &quot;is_equal_to&quot;,</span>
+<span class="sd">                                    &quot;subject&quot;: [&quot;column2&quot;]</span>
+<span class="sd">                                }</span>
+<span class="sd">                            ]</span>
+<span class="sd">                        },</span>
+<span class="sd">                        {</span>
+<span class="sd">                            &quot;id&quot;: &quot;column2&quot;,</span>
+<span class="sd">                            &quot;data_type&quot;: &quot;varchar&quot;,</span>
+<span class="sd">                            &quot;nullable&quot;: True,</span>
+<span class="sd">                            &quot;unique&quot;: False,</span>
+<span class="sd">                            &quot;required&quot;: False,</span>
+<span class="sd">                            &quot;checks&quot;: [</span>
+<span class="sd">                                {</span>
+<span class="sd">                                    &#39;check_case&#39;: &#39;condition&#39;,</span>
+<span class="sd">                                    &#39;expressions&#39;: [</span>
+<span class="sd">                                        {</span>
+<span class="sd">                                            &#39;command&#39;: &#39;is_in&#39;,</span>
+<span class="sd">                                            &#39;arg_values&#39;: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+<span class="sd">                                        },</span>
+<span class="sd">                                        {</span>
+<span class="sd">                                            &#39;command&#39;: &#39;is_equal_to&#39;,</span>
+<span class="sd">                                            &#39;subject&#39;: [&#39;column1&#39;],</span>
+<span class="sd">                                            &#39;arg_values&#39;: [1]</span>
+<span class="sd">                                        }</span>
+<span class="sd">                                    ]</span>
+<span class="sd">                                }</span>
+<span class="sd">                            ],</span>
+<span class="sd">                        }</span>
+<span class="sd">                    &quot;ids&quot;: [&quot;column1&quot;],</span>
+<span class="sd">                    &quot;metadata&quot;: {&quot;description&quot;: &quot;Example DataFrame schema&quot;},</span>
+<span class="sd">                    &quot;checks&quot;: [</span>
+<span class="sd">                        {</span>
+<span class="sd">                            &#39;name&#39;: &#39;example_check&#39;,</span>
+<span class="sd">                            &#39;error_level&#39;: &#39;warning&#39;,</span>
+<span class="sd">                            &#39;error_msg&#39;: &#39;This is an example check&#39;,</span>
+<span class="sd">                            &#39;command&#39;: &#39;is_in&#39;,</span>
+<span class="sd">                            &#39;subject&#39;: [&#39;column1&#39;, &#39;column2&#39;],</span>
+<span class="sd">                            &#39;arg_values&#39;: [1, 2]</span>
+<span class="sd">                        }</span>
+<span class="sd">                    ]</span>
+<span class="sd">                }</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Validator: An instance of the Validator class with the schema</span>
+<span class="sd">                created from the provided configuration mapping.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            Exception: If an error occurs while reading the configuration</span>
+<span class="sd">                or creating the schema, and collect_exceptions is False.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">validator</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">validator</span><span class="o">.</span><span class="n">df_schema</span> <span class="o">=</span> <span class="n">get_df_schema</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Error reading inputs: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">err</span>
+
+            <span class="n">error_traceback</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+            <span class="n">validator</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span>
+                <span class="n">ExceptionSchema</span><span class="p">(</span>
+                    <span class="n">error_type</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                    <span class="n">error_message</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">),</span>
+                    <span class="n">error_level</span><span class="o">=</span><span class="s1">&#39;critical&#39;</span><span class="p">,</span>
+                    <span class="n">error_traceback</span><span class="o">=</span><span class="n">error_traceback</span><span class="p">,</span>
+                    <span class="n">error_context</span><span class="o">=</span><span class="s1">&#39;Validator.config_from_mapping&#39;</span><span class="p">,</span>
+                    <span class="n">error_source</span><span class="o">=</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;DFSchema created successfully&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">validator</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">convert_mapping_to_dataframe</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dataframe</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">|</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">collect_exceptions</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span> <span class="o">=</span> <span class="n">logger</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Reading DataFrame from mapping&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">read_dataframe</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Error converting dataframe: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">err</span>
+
+            <span class="n">error_traceback</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span>
+                <span class="n">ExceptionSchema</span><span class="p">(</span>
+                    <span class="n">error_type</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                    <span class="n">error_message</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">),</span>
+                    <span class="n">error_level</span><span class="o">=</span><span class="s1">&#39;critical&#39;</span><span class="p">,</span>
+                    <span class="n">error_traceback</span><span class="o">=</span><span class="n">error_traceback</span><span class="p">,</span>
+                    <span class="n">error_context</span><span class="o">=</span><span class="s1">&#39;Validator.convert_mapping_to_dataframe&#39;</span><span class="p">,</span>
+                    <span class="n">error_source</span><span class="o">=</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dataframe</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">|</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">lazy_validation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">collect_exceptions</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span> <span class="o">=</span> <span class="n">logger</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validates a DataFrame against the defined schema.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dataframe (Mapping[str, list] | pl.DataFrame): The input data</span>
+<span class="sd">                as a mapping or a Polars DataFrame.</span>
+<span class="sd">            lazy_validation (bool, optional): Whether to perform lazy validation.</span>
+<span class="sd">                Defaults to True.</span>
+<span class="sd">            collect_exceptions (bool, optional): Whether to collect exceptions</span>
+<span class="sd">                during validation. Defaults to True.</span>
+<span class="sd">            logger (logging.Logger, optional): Logger instance for logging.</span>
+<span class="sd">                Defaults to the module logger.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            Exception: If an error occurs during validation and</span>
+<span class="sd">                collect_exceptions is False.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Starting DataFrame validation&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+            <span class="n">dataframe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_mapping_to_dataframe</span><span class="p">(</span>
+                <span class="n">dataframe</span><span class="o">=</span><span class="n">dataframe</span><span class="p">,</span>
+                <span class="n">collect_exceptions</span><span class="o">=</span><span class="n">collect_exceptions</span><span class="p">,</span>
+                <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Building DataFrame schema </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">df_schema</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">df_schema</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df_schema</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Error building dataframe schema: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">err</span>
+
+            <span class="n">error_traceback</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span>
+                <span class="n">ExceptionSchema</span><span class="p">(</span>
+                    <span class="n">error_type</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                    <span class="n">error_message</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">),</span>
+                    <span class="n">error_level</span><span class="o">=</span><span class="s1">&#39;critical&#39;</span><span class="p">,</span>
+                    <span class="n">error_traceback</span><span class="o">=</span><span class="n">error_traceback</span><span class="p">,</span>
+                    <span class="n">error_context</span><span class="o">=</span><span class="s1">&#39;Validator.validate&#39;</span><span class="p">,</span>
+                    <span class="n">error_source</span><span class="o">=</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Casting DataFrame Types&#39;</span><span class="p">)</span>
+            <span class="n">dataframe</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">cast</span><span class="p">({</span>
+                <span class="n">col</span><span class="o">.</span><span class="n">id</span><span class="p">:</span> <span class="n">validation_type_mapper</span><span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">data_type</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">df_schema</span><span class="o">.</span><span class="n">columns</span>
+                <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">columns</span>
+            <span class="p">})</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Error casting dataframe types: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">err</span>
+
+            <span class="n">error_traceback</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span>
+                <span class="n">ExceptionSchema</span><span class="p">(</span>
+                    <span class="n">error_type</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                    <span class="n">error_message</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">),</span>
+                    <span class="n">error_level</span><span class="o">=</span><span class="s1">&#39;critical&#39;</span><span class="p">,</span>
+                    <span class="n">error_traceback</span><span class="o">=</span><span class="n">error_traceback</span><span class="p">,</span>
+                    <span class="n">error_context</span><span class="o">=</span><span class="s1">&#39;Validator.validate&#39;</span><span class="p">,</span>
+                    <span class="n">error_source</span><span class="o">=</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Starting DataFrame validation&#39;</span><span class="p">)</span>
+            <span class="n">dataframe</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">df_schema</span><span class="o">.</span><span class="n">validate</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="n">lazy_validation</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="p">(</span><span class="n">pa</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SchemaErrors</span><span class="p">,</span> <span class="n">pa</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SchemaError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">err</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Collecting validation errors&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+        <span class="c1"># Pandera not implemented for polars some lazy validation.</span>
+        <span class="c1"># Run in again in eager mode to catch the error.</span>
+        <span class="c1"># This is a workaround for the issue.</span>
+        <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Trying eager validation&#39;</span><span class="p">)</span>
+                <span class="n">dataframe</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">df_schema</span><span class="o">.</span><span class="n">validate</span><span class="p">)</span>
+
+            <span class="k">except</span> <span class="n">pa</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SchemaError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">err</span>
+
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Collecting eager validation errors&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Error validating dataframe: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">err</span>
+
+            <span class="n">error_traceback</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span>
+                <span class="n">ExceptionSchema</span><span class="p">(</span>
+                    <span class="n">error_type</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                    <span class="n">error_message</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">),</span>
+                    <span class="n">error_level</span><span class="o">=</span><span class="s1">&#39;critical&#39;</span><span class="p">,</span>
+                    <span class="n">error_traceback</span><span class="o">=</span><span class="n">error_traceback</span><span class="p">,</span>
+                    <span class="n">error_context</span><span class="o">=</span><span class="s1">&#39;Validator.validate&#39;</span><span class="p">,</span>
+                    <span class="n">error_source</span><span class="o">=</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;DataFrame validation completed&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="peh_validation_library.validator.validator.Validator.config_from_mapping" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">config_from_mapping</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">config_from_mapping</span><span class="p">(</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Sequence</span> <span class="o">|</span> <span class="n">Mapping</span><span class="p">],</span>
+    <span class="n">collect_exceptions</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span> <span class="o">=</span> <span class="n">logger</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Validator</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Creates a DFSchema from a configuration mapping.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+<h4 id="peh_validation_library.validator.validator.Validator.config_from_mapping(config)" class="doc doc-heading doc-heading-parameter">                  <code>config</code>
+</h4>            </td>
+            <td>
+                  <code><span title="collections.abc.Mapping">Mapping</span>[<span title="str">str</span>, <span title="str">str</span> | <span title="collections.abc.Sequence">Sequence</span> | <span title="collections.abc.Mapping">Mapping</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Configuration
+mapping for the DataFrame schema.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h4 id="peh_validation_library.validator.validator.Validator.config_from_mapping(collect_exceptions)" class="doc doc-heading doc-heading-parameter">                  <code>collect_exceptions</code>
+</h4>            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to collect exceptions
+during the schema creation. Defaults to True.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h4 id="peh_validation_library.validator.validator.Validator.config_from_mapping(logger)" class="doc doc-heading doc-heading-parameter">                  <code>logger</code>
+</h4>            </td>
+            <td>
+                  <code><span title="logging">logging</span>.<span title="logging.Logger">Logger</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Logger instance for logging.
+Defaults to the module logger.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="peh_validation_library.validator.validator.logger">logger</span></code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>The command is either a user-defined function or a string that
+maps to a function that will be used to validate the DataFrame.</p>
+<p>The following commands are available:</p>
+<pre><code>'is_equal_to',
+'is_equal_to_or_both_missing',
+'is_greater_than_or_equal_to',
+'is_greater_than',
+'is_less_than_or_equal_to',
+'is_less_than',
+'is_not_equal_to',
+'is_not_equal_to_and_not_both_missing',
+'is_unique',
+'is_duplicated',
+'is_in',
+'is_null',
+'is_not_null'
+</code></pre>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">config_input</span> <span class="o">=</span> <span class="p">{</span>
+<span class="go">        &quot;name&quot;: &quot;example_schema&quot;,</span>
+<span class="go">        &quot;columns&quot;: [</span>
+<span class="go">            {</span>
+<span class="go">                &quot;id&quot;: &quot;column1&quot;,</span>
+<span class="go">                &quot;data_type&quot;: &quot;integer&quot;,</span>
+<span class="go">                &quot;nullable&quot;: False,</span>
+<span class="go">                &quot;unique&quot;: True,</span>
+<span class="go">                &quot;required&quot;: True,</span>
+<span class="go">                &quot;checks&quot;: [</span>
+<span class="go">                    {</span>
+<span class="go">                        &quot;command&quot;: &quot;is_equal_to&quot;,</span>
+<span class="go">                        &quot;subject&quot;: [&quot;column2&quot;]</span>
+<span class="go">                    }</span>
+<span class="go">                ]</span>
+<span class="go">            },</span>
+<span class="go">            {</span>
+<span class="go">                &quot;id&quot;: &quot;column2&quot;,</span>
+<span class="go">                &quot;data_type&quot;: &quot;varchar&quot;,</span>
+<span class="go">                &quot;nullable&quot;: True,</span>
+<span class="go">                &quot;unique&quot;: False,</span>
+<span class="go">                &quot;required&quot;: False,</span>
+<span class="go">                &quot;checks&quot;: [</span>
+<span class="go">                    {</span>
+<span class="go">                        &#39;check_case&#39;: &#39;condition&#39;,</span>
+<span class="go">                        &#39;expressions&#39;: [</span>
+<span class="go">                            {</span>
+<span class="go">                                &#39;command&#39;: &#39;is_in&#39;,</span>
+<span class="go">                                &#39;arg_values&#39;: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+<span class="go">                            },</span>
+<span class="go">                            {</span>
+<span class="go">                                &#39;command&#39;: &#39;is_equal_to&#39;,</span>
+<span class="go">                                &#39;subject&#39;: [&#39;column1&#39;],</span>
+<span class="go">                                &#39;arg_values&#39;: [1]</span>
+<span class="go">                            }</span>
+<span class="go">                        ]</span>
+<span class="go">                    }</span>
+<span class="go">                ],</span>
+<span class="go">            }</span>
+<span class="go">        &quot;ids&quot;: [&quot;column1&quot;],</span>
+<span class="go">        &quot;metadata&quot;: {&quot;description&quot;: &quot;Example DataFrame schema&quot;},</span>
+<span class="go">        &quot;checks&quot;: [</span>
+<span class="go">            {</span>
+<span class="go">                &#39;name&#39;: &#39;example_check&#39;,</span>
+<span class="go">                &#39;error_level&#39;: &#39;warning&#39;,</span>
+<span class="go">                &#39;error_msg&#39;: &#39;This is an example check&#39;,</span>
+<span class="go">                &#39;command&#39;: &#39;is_in&#39;,</span>
+<span class="go">                &#39;subject&#39;: [&#39;column1&#39;, &#39;column2&#39;],</span>
+<span class="go">                &#39;arg_values&#39;: [1, 2]</span>
+<span class="go">            }</span>
+<span class="go">        ]</span>
+<span class="go">    }</span>
+</code></pre></div>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>Validator</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Validator (peh_validation_library.validator.validator.Validator)" href="#peh_validation_library.validator.validator.Validator">Validator</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An instance of the Validator class with the schema
+created from the provided configuration mapping.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="Exception">Exception</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If an error occurs while reading the configuration
+or creating the schema, and collect_exceptions is False.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/peh_validation_library/validator/validator.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">config_from_mapping</span><span class="p">(</span>
+    <span class="bp">cls</span><span class="p">,</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Sequence</span> <span class="o">|</span> <span class="n">Mapping</span><span class="p">],</span>
+    <span class="n">collect_exceptions</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span> <span class="o">=</span> <span class="n">logger</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Validator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a DFSchema from a configuration mapping.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        config (Mapping[str, str | Sequence | Mapping]): Configuration</span>
+<span class="sd">            mapping for the DataFrame schema.</span>
+<span class="sd">        collect_exceptions (bool, optional): Whether to collect exceptions</span>
+<span class="sd">            during the schema creation. Defaults to True.</span>
+<span class="sd">        logger (logging.Logger, optional): Logger instance for logging.</span>
+<span class="sd">            Defaults to the module logger.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        The command is either a user-defined function or a string that</span>
+<span class="sd">        maps to a function that will be used to validate the DataFrame.</span>
+
+<span class="sd">        The following commands are available:</span>
+
+<span class="sd">            &#39;is_equal_to&#39;,</span>
+<span class="sd">            &#39;is_equal_to_or_both_missing&#39;,</span>
+<span class="sd">            &#39;is_greater_than_or_equal_to&#39;,</span>
+<span class="sd">            &#39;is_greater_than&#39;,</span>
+<span class="sd">            &#39;is_less_than_or_equal_to&#39;,</span>
+<span class="sd">            &#39;is_less_than&#39;,</span>
+<span class="sd">            &#39;is_not_equal_to&#39;,</span>
+<span class="sd">            &#39;is_not_equal_to_and_not_both_missing&#39;,</span>
+<span class="sd">            &#39;is_unique&#39;,</span>
+<span class="sd">            &#39;is_duplicated&#39;,</span>
+<span class="sd">            &#39;is_in&#39;,</span>
+<span class="sd">            &#39;is_null&#39;,</span>
+<span class="sd">            &#39;is_not_null&#39;</span>
+
+<span class="sd">        &gt;&gt;&gt; config_input = {</span>
+<span class="sd">                &quot;name&quot;: &quot;example_schema&quot;,</span>
+<span class="sd">                &quot;columns&quot;: [</span>
+<span class="sd">                    {</span>
+<span class="sd">                        &quot;id&quot;: &quot;column1&quot;,</span>
+<span class="sd">                        &quot;data_type&quot;: &quot;integer&quot;,</span>
+<span class="sd">                        &quot;nullable&quot;: False,</span>
+<span class="sd">                        &quot;unique&quot;: True,</span>
+<span class="sd">                        &quot;required&quot;: True,</span>
+<span class="sd">                        &quot;checks&quot;: [</span>
+<span class="sd">                            {</span>
+<span class="sd">                                &quot;command&quot;: &quot;is_equal_to&quot;,</span>
+<span class="sd">                                &quot;subject&quot;: [&quot;column2&quot;]</span>
+<span class="sd">                            }</span>
+<span class="sd">                        ]</span>
+<span class="sd">                    },</span>
+<span class="sd">                    {</span>
+<span class="sd">                        &quot;id&quot;: &quot;column2&quot;,</span>
+<span class="sd">                        &quot;data_type&quot;: &quot;varchar&quot;,</span>
+<span class="sd">                        &quot;nullable&quot;: True,</span>
+<span class="sd">                        &quot;unique&quot;: False,</span>
+<span class="sd">                        &quot;required&quot;: False,</span>
+<span class="sd">                        &quot;checks&quot;: [</span>
+<span class="sd">                            {</span>
+<span class="sd">                                &#39;check_case&#39;: &#39;condition&#39;,</span>
+<span class="sd">                                &#39;expressions&#39;: [</span>
+<span class="sd">                                    {</span>
+<span class="sd">                                        &#39;command&#39;: &#39;is_in&#39;,</span>
+<span class="sd">                                        &#39;arg_values&#39;: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+<span class="sd">                                    },</span>
+<span class="sd">                                    {</span>
+<span class="sd">                                        &#39;command&#39;: &#39;is_equal_to&#39;,</span>
+<span class="sd">                                        &#39;subject&#39;: [&#39;column1&#39;],</span>
+<span class="sd">                                        &#39;arg_values&#39;: [1]</span>
+<span class="sd">                                    }</span>
+<span class="sd">                                ]</span>
+<span class="sd">                            }</span>
+<span class="sd">                        ],</span>
+<span class="sd">                    }</span>
+<span class="sd">                &quot;ids&quot;: [&quot;column1&quot;],</span>
+<span class="sd">                &quot;metadata&quot;: {&quot;description&quot;: &quot;Example DataFrame schema&quot;},</span>
+<span class="sd">                &quot;checks&quot;: [</span>
+<span class="sd">                    {</span>
+<span class="sd">                        &#39;name&#39;: &#39;example_check&#39;,</span>
+<span class="sd">                        &#39;error_level&#39;: &#39;warning&#39;,</span>
+<span class="sd">                        &#39;error_msg&#39;: &#39;This is an example check&#39;,</span>
+<span class="sd">                        &#39;command&#39;: &#39;is_in&#39;,</span>
+<span class="sd">                        &#39;subject&#39;: [&#39;column1&#39;, &#39;column2&#39;],</span>
+<span class="sd">                        &#39;arg_values&#39;: [1, 2]</span>
+<span class="sd">                    }</span>
+<span class="sd">                ]</span>
+<span class="sd">            }</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Validator: An instance of the Validator class with the schema</span>
+<span class="sd">            created from the provided configuration mapping.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        Exception: If an error occurs while reading the configuration</span>
+<span class="sd">            or creating the schema, and collect_exceptions is False.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">validator</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">validator</span><span class="o">.</span><span class="n">df_schema</span> <span class="o">=</span> <span class="n">get_df_schema</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Error reading inputs: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">err</span>
+
+        <span class="n">error_traceback</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+        <span class="n">validator</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span>
+            <span class="n">ExceptionSchema</span><span class="p">(</span>
+                <span class="n">error_type</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="n">error_message</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">),</span>
+                <span class="n">error_level</span><span class="o">=</span><span class="s1">&#39;critical&#39;</span><span class="p">,</span>
+                <span class="n">error_traceback</span><span class="o">=</span><span class="n">error_traceback</span><span class="p">,</span>
+                <span class="n">error_context</span><span class="o">=</span><span class="s1">&#39;Validator.config_from_mapping&#39;</span><span class="p">,</span>
+                <span class="n">error_source</span><span class="o">=</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;DFSchema created successfully&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">validator</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="peh_validation_library.validator.validator.Validator.validate" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">validate</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">validate</span><span class="p">(</span>
+    <span class="n">dataframe</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">|</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">lazy_validation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">collect_exceptions</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span> <span class="o">=</span> <span class="n">logger</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Validates a DataFrame against the defined schema.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+<h4 id="peh_validation_library.validator.validator.Validator.validate(dataframe)" class="doc doc-heading doc-heading-parameter">                  <code>dataframe</code>
+</h4>            </td>
+            <td>
+                  <code><span title="collections.abc.Mapping">Mapping</span>[<span title="str">str</span>, <span title="list">list</span>] | <span title="polars">pl</span>.<span title="polars.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The input data
+as a mapping or a Polars DataFrame.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h4 id="peh_validation_library.validator.validator.Validator.validate(lazy_validation)" class="doc doc-heading doc-heading-parameter">                  <code>lazy_validation</code>
+</h4>            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to perform lazy validation.
+Defaults to True.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h4 id="peh_validation_library.validator.validator.Validator.validate(collect_exceptions)" class="doc doc-heading doc-heading-parameter">                  <code>collect_exceptions</code>
+</h4>            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to collect exceptions
+during validation. Defaults to True.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+<h4 id="peh_validation_library.validator.validator.Validator.validate(logger)" class="doc doc-heading doc-heading-parameter">                  <code>logger</code>
+</h4>            </td>
+            <td>
+                  <code><span title="logging">logging</span>.<span title="logging.Logger">Logger</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Logger instance for logging.
+Defaults to the module logger.</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="peh_validation_library.validator.validator.logger">logger</span></code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="Exception">Exception</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If an error occurs during validation and
+collect_exceptions is False.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/peh_validation_library/validator/validator.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">dataframe</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">|</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">lazy_validation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">collect_exceptions</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span> <span class="o">=</span> <span class="n">logger</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validates a DataFrame against the defined schema.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dataframe (Mapping[str, list] | pl.DataFrame): The input data</span>
+<span class="sd">            as a mapping or a Polars DataFrame.</span>
+<span class="sd">        lazy_validation (bool, optional): Whether to perform lazy validation.</span>
+<span class="sd">            Defaults to True.</span>
+<span class="sd">        collect_exceptions (bool, optional): Whether to collect exceptions</span>
+<span class="sd">            during validation. Defaults to True.</span>
+<span class="sd">        logger (logging.Logger, optional): Logger instance for logging.</span>
+<span class="sd">            Defaults to the module logger.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        Exception: If an error occurs during validation and</span>
+<span class="sd">            collect_exceptions is False.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Starting DataFrame validation&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+        <span class="n">dataframe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_mapping_to_dataframe</span><span class="p">(</span>
+            <span class="n">dataframe</span><span class="o">=</span><span class="n">dataframe</span><span class="p">,</span>
+            <span class="n">collect_exceptions</span><span class="o">=</span><span class="n">collect_exceptions</span><span class="p">,</span>
+            <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Building DataFrame schema </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">df_schema</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">df_schema</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">df_schema</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Error building dataframe schema: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">err</span>
+
+        <span class="n">error_traceback</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span>
+            <span class="n">ExceptionSchema</span><span class="p">(</span>
+                <span class="n">error_type</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="n">error_message</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">),</span>
+                <span class="n">error_level</span><span class="o">=</span><span class="s1">&#39;critical&#39;</span><span class="p">,</span>
+                <span class="n">error_traceback</span><span class="o">=</span><span class="n">error_traceback</span><span class="p">,</span>
+                <span class="n">error_context</span><span class="o">=</span><span class="s1">&#39;Validator.validate&#39;</span><span class="p">,</span>
+                <span class="n">error_source</span><span class="o">=</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Casting DataFrame Types&#39;</span><span class="p">)</span>
+        <span class="n">dataframe</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">cast</span><span class="p">({</span>
+            <span class="n">col</span><span class="o">.</span><span class="n">id</span><span class="p">:</span> <span class="n">validation_type_mapper</span><span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">data_type</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">df_schema</span><span class="o">.</span><span class="n">columns</span>
+            <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">columns</span>
+        <span class="p">})</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Error casting dataframe types: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">err</span>
+
+        <span class="n">error_traceback</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span>
+            <span class="n">ExceptionSchema</span><span class="p">(</span>
+                <span class="n">error_type</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="n">error_message</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">),</span>
+                <span class="n">error_level</span><span class="o">=</span><span class="s1">&#39;critical&#39;</span><span class="p">,</span>
+                <span class="n">error_traceback</span><span class="o">=</span><span class="n">error_traceback</span><span class="p">,</span>
+                <span class="n">error_context</span><span class="o">=</span><span class="s1">&#39;Validator.validate&#39;</span><span class="p">,</span>
+                <span class="n">error_source</span><span class="o">=</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Starting DataFrame validation&#39;</span><span class="p">)</span>
+        <span class="n">dataframe</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">df_schema</span><span class="o">.</span><span class="n">validate</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="n">lazy_validation</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="p">(</span><span class="n">pa</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SchemaErrors</span><span class="p">,</span> <span class="n">pa</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SchemaError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">err</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Collecting validation errors&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="c1"># Pandera not implemented for polars some lazy validation.</span>
+    <span class="c1"># Run in again in eager mode to catch the error.</span>
+    <span class="c1"># This is a workaround for the issue.</span>
+    <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Trying eager validation&#39;</span><span class="p">)</span>
+            <span class="n">dataframe</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">df_schema</span><span class="o">.</span><span class="n">validate</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">pa</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SchemaError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">err</span>
+
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Collecting eager validation errors&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Error validating dataframe: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">collect_exceptions</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">err</span>
+
+        <span class="n">error_traceback</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_collector</span><span class="o">.</span><span class="n">add_errors</span><span class="p">(</span>
+            <span class="n">ExceptionSchema</span><span class="p">(</span>
+                <span class="n">error_type</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="n">error_message</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">),</span>
+                <span class="n">error_level</span><span class="o">=</span><span class="s1">&#39;critical&#39;</span><span class="p">,</span>
+                <span class="n">error_traceback</span><span class="o">=</span><span class="n">error_traceback</span><span class="p">,</span>
+                <span class="n">error_context</span><span class="o">=</span><span class="s1">&#39;Validator.validate&#39;</span><span class="p">,</span>
+                <span class="n">error_source</span><span class="o">=</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;DataFrame validation completed&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="peh_validation_library.core.utils.enums"></a>
+    <div class="doc doc-contents first">
+
+        <p>Enums used in the validation library.
+These enums define various constants used throughout the library for
+error levels, validation types, and check cases.</p>
+<p>config_input must use the following naming conventions.</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="peh_validation_library.core.utils.enums.CheckCases" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">CheckCases</span>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="enum.Enum">Enum</span></code></p>
+
+
+        <p>Enum representing different types of check cases.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/peh_validation_library/core/utils/enums.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">CheckCases</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enum representing different types of check cases.&quot;&quot;&quot;</span>
+
+    <span class="n">CONDITION</span> <span class="o">=</span> <span class="s1">&#39;condition&#39;</span>
+    <span class="n">CONJUNCTION</span> <span class="o">=</span> <span class="s1">&#39;conjunction&#39;</span>
+    <span class="n">DISJUNCTION</span> <span class="o">=</span> <span class="s1">&#39;disjunction&#39;</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="peh_validation_library.core.utils.enums.ErrorLevel" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">ErrorLevel</span>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="enum.Enum">Enum</span></code></p>
+
+
+        <p>Enum representing different levels of error severity.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/peh_validation_library/core/utils/enums.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ErrorLevel</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enum representing different levels of error severity.&quot;&quot;&quot;</span>
+
+    <span class="n">WARNING</span> <span class="o">=</span> <span class="s1">&#39;warning&#39;</span>
+    <span class="n">ERROR</span> <span class="o">=</span> <span class="s1">&#39;error&#39;</span>
+    <span class="n">CRITICAL</span> <span class="o">=</span> <span class="s1">&#39;critical&#39;</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="peh_validation_library.core.utils.enums.ValidationType" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">ValidationType</span>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="enum.Enum">Enum</span></code></p>
+
+
+        <p>Enum representing different validation types for DataFrame columns.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/peh_validation_library/core/utils/enums.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ValidationType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enum representing different validation types for DataFrame columns.&quot;&quot;&quot;</span>
+
+    <span class="n">DATE</span> <span class="o">=</span> <span class="s1">&#39;date&#39;</span>
+    <span class="n">DATETIME</span> <span class="o">=</span> <span class="s1">&#39;datetime&#39;</span>
+    <span class="n">BOOL</span> <span class="o">=</span> <span class="s1">&#39;boolean&#39;</span>
+    <span class="n">FLOAT</span> <span class="o">=</span> <span class="s1">&#39;decimal&#39;</span>
+    <span class="n">INT</span> <span class="o">=</span> <span class="s1">&#39;integer&#39;</span>
+    <span class="n">STR</span> <span class="o">=</span> <span class="s1">&#39;varchar&#39;</span>
+    <span class="n">CAT</span> <span class="o">=</span> <span class="s1">&#39;categorical&#39;</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="peh_validation_library.error_report.error_collector"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="peh_validation_library.error_report.error_collector.ErrorCollector" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">ErrorCollector</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-cached"><code>cached</code></small>
+  </span>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+
+        <p>ErrorCollector class for collecting errors during validation.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/peh_validation_library/error_report/error_collector.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@cache</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ErrorCollector</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;ErrorCollector class for collecting errors during validation.&quot;&quot;&quot;</span>
+
+    <span class="n">COUNTER</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__errors</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__exceptions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_errors</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">error</span><span class="p">:</span> <span class="n">ExceptionSchema</span>
+        <span class="o">|</span> <span class="n">pa</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SchemaError</span>
+        <span class="o">|</span> <span class="n">pa</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SchemaErrors</span><span class="p">,</span>  <span class="c1"># noqa: E501</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds errors to the collector.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            error (ExceptionSchema | pa.errors.SchemaError | pa.errors.SchemaErrors): The error to add.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s1">&#39;error_traceback&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__exceptions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s1">&#39;schema_errors&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">idx_columns</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">unique</span>
+            <span class="k">for</span> <span class="n">err</span> <span class="ow">in</span> <span class="n">error</span><span class="o">.</span><span class="n">schema_errors</span><span class="p">:</span>
+                <span class="n">column_names</span><span class="p">,</span> <span class="n">row_ids</span> <span class="o">=</span> <span class="n">from_schema_error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">check</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                    <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">ErrorSchema</span><span class="p">(</span>
+                            <span class="n">column_names</span><span class="o">=</span><span class="n">column_names</span><span class="p">,</span>
+                            <span class="n">row_ids</span><span class="o">=</span><span class="n">row_ids</span><span class="p">,</span>
+                            <span class="n">idx_columns</span><span class="o">=</span><span class="n">idx_columns</span><span class="p">,</span>
+                            <span class="n">level</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">check</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                            <span class="n">message</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">check</span><span class="o">.</span><span class="n">error</span><span class="p">,</span>
+                            <span class="n">title</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">check</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">ErrorSchema</span><span class="p">(</span>
+                            <span class="n">column_names</span><span class="o">=</span><span class="n">column_names</span><span class="p">,</span>
+                            <span class="n">row_ids</span><span class="o">=</span><span class="n">row_ids</span><span class="p">,</span>
+                            <span class="n">idx_columns</span><span class="o">=</span><span class="n">idx_columns</span><span class="p">,</span>
+                            <span class="n">level</span><span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="p">,</span>
+                            <span class="n">message</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">check</span><span class="p">,</span>
+                            <span class="n">title</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">check</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">column_names</span><span class="p">,</span> <span class="n">row_ids</span> <span class="o">=</span> <span class="n">from_schema_error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">ErrorSchema</span><span class="p">(</span>
+                    <span class="n">column_names</span><span class="o">=</span><span class="n">column_names</span><span class="p">,</span>
+                    <span class="n">row_ids</span><span class="o">=</span><span class="n">row_ids</span><span class="p">,</span>
+                    <span class="n">idx_columns</span><span class="o">=</span><span class="n">error</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">unique</span><span class="p">,</span>
+                    <span class="n">level</span><span class="o">=</span><span class="n">error</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">level</span><span class="p">,</span>
+                    <span class="n">message</span><span class="o">=</span><span class="n">error</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">message</span><span class="p">,</span>
+                    <span class="n">title</span><span class="o">=</span><span class="n">error</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">ErrorReportSchema</span><span class="p">(</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">error</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+                    <span class="n">total_errors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">),</span>
+                    <span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">COUNTER</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">COUNTER</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_errors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ErrorCollectorSchema</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the collected errors and exceptions.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ErrorCollectorSchema: A schema containing the collected errors and exceptions.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+        <span class="k">return</span> <span class="n">ErrorCollectorSchema</span><span class="p">(</span>
+            <span class="n">error_reports</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__errors</span><span class="p">,</span> <span class="n">exceptions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__exceptions</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear_errors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears the collected errors and exceptions.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__errors</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__exceptions</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">COUNTER</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="peh_validation_library.error_report.error_collector.ErrorCollector.add_errors" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">add_errors</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">add_errors</span><span class="p">(</span>
+    <span class="n">error</span><span class="p">:</span> <span class="n">ExceptionSchema</span>
+    <span class="o">|</span> <span class="n">pa</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SchemaError</span>
+    <span class="o">|</span> <span class="n">pa</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SchemaErrors</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Adds errors to the collector.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+<h4 id="peh_validation_library.error_report.error_collector.ErrorCollector.add_errors(error)" class="doc doc-heading doc-heading-parameter">                  <code>error</code>
+</h4>            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            ExceptionSchema (peh_validation_library.error_report.error_schemas.ExceptionSchema)" href="#peh_validation_library.error_report.error_schemas.ExceptionSchema">ExceptionSchema</a> | <span title="pandera.polars">pa</span>.<span title="pandera.polars.errors">errors</span>.<span title="pandera.polars.errors.SchemaError">SchemaError</span> | <span title="pandera.polars">pa</span>.<span title="pandera.polars.errors">errors</span>.<span title="pandera.polars.errors.SchemaErrors">SchemaErrors</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The error to add.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>None</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/peh_validation_library/error_report/error_collector.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_errors</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">error</span><span class="p">:</span> <span class="n">ExceptionSchema</span>
+    <span class="o">|</span> <span class="n">pa</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SchemaError</span>
+    <span class="o">|</span> <span class="n">pa</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">SchemaErrors</span><span class="p">,</span>  <span class="c1"># noqa: E501</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds errors to the collector.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        error (ExceptionSchema | pa.errors.SchemaError | pa.errors.SchemaErrors): The error to add.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+    <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s1">&#39;error_traceback&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__exceptions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="s1">&#39;schema_errors&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">idx_columns</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">unique</span>
+        <span class="k">for</span> <span class="n">err</span> <span class="ow">in</span> <span class="n">error</span><span class="o">.</span><span class="n">schema_errors</span><span class="p">:</span>
+            <span class="n">column_names</span><span class="p">,</span> <span class="n">row_ids</span> <span class="o">=</span> <span class="n">from_schema_error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">check</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">ErrorSchema</span><span class="p">(</span>
+                        <span class="n">column_names</span><span class="o">=</span><span class="n">column_names</span><span class="p">,</span>
+                        <span class="n">row_ids</span><span class="o">=</span><span class="n">row_ids</span><span class="p">,</span>
+                        <span class="n">idx_columns</span><span class="o">=</span><span class="n">idx_columns</span><span class="p">,</span>
+                        <span class="n">level</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">check</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                        <span class="n">message</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">check</span><span class="o">.</span><span class="n">error</span><span class="p">,</span>
+                        <span class="n">title</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">check</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">ErrorSchema</span><span class="p">(</span>
+                        <span class="n">column_names</span><span class="o">=</span><span class="n">column_names</span><span class="p">,</span>
+                        <span class="n">row_ids</span><span class="o">=</span><span class="n">row_ids</span><span class="p">,</span>
+                        <span class="n">idx_columns</span><span class="o">=</span><span class="n">idx_columns</span><span class="p">,</span>
+                        <span class="n">level</span><span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="p">,</span>
+                        <span class="n">message</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">check</span><span class="p">,</span>
+                        <span class="n">title</span><span class="o">=</span><span class="n">err</span><span class="o">.</span><span class="n">check</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">column_names</span><span class="p">,</span> <span class="n">row_ids</span> <span class="o">=</span> <span class="n">from_schema_error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">ErrorSchema</span><span class="p">(</span>
+                <span class="n">column_names</span><span class="o">=</span><span class="n">column_names</span><span class="p">,</span>
+                <span class="n">row_ids</span><span class="o">=</span><span class="n">row_ids</span><span class="p">,</span>
+                <span class="n">idx_columns</span><span class="o">=</span><span class="n">error</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">unique</span><span class="p">,</span>
+                <span class="n">level</span><span class="o">=</span><span class="n">error</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">level</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="n">error</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">message</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="n">error</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">ErrorReportSchema</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">error</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+                <span class="n">total_errors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">),</span>
+                <span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">COUNTER</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">COUNTER</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="peh_validation_library.error_report.error_collector.ErrorCollector.clear_errors" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">clear_errors</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">clear_errors</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Clears the collected errors and exceptions.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/peh_validation_library/error_report/error_collector.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clear_errors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clears the collected errors and exceptions.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__errors</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__exceptions</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">COUNTER</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="peh_validation_library.error_report.error_collector.ErrorCollector.get_errors" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">get_errors</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_errors</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ErrorCollectorSchema</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Returns the collected errors and exceptions.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>ErrorCollectorSchema</code></td>            <td>
+                  <code><a class="autorefs autorefs-internal" title="            ErrorCollectorSchema (peh_validation_library.error_report.error_schemas.ErrorCollectorSchema)" href="#peh_validation_library.error_report.error_schemas.ErrorCollectorSchema">ErrorCollectorSchema</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A schema containing the collected errors and exceptions.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/peh_validation_library/error_report/error_collector.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_errors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ErrorCollectorSchema</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the collected errors and exceptions.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ErrorCollectorSchema: A schema containing the collected errors and exceptions.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+    <span class="k">return</span> <span class="n">ErrorCollectorSchema</span><span class="p">(</span>
+        <span class="n">error_reports</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__errors</span><span class="p">,</span> <span class="n">exceptions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__exceptions</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="peh_validation_library.error_report.error_schemas"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="peh_validation_library.error_report.error_schemas.ErrorCollectorSchema" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">ErrorCollectorSchema</span>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+
+
+        <p>Schema for collecting errors and exceptions during validation.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ErrorCollectorSchema.error_reports">error_reports</span></code></td>
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="            ErrorReportSchema (peh_validation_library.error_report.error_schemas.ErrorReportSchema)" href="#peh_validation_library.error_report.error_schemas.ErrorReportSchema">ErrorReportSchema</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of error reports.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ErrorCollectorSchema.exceptions">exceptions</span></code></td>
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="            ExceptionSchema (peh_validation_library.error_report.error_schemas.ExceptionSchema)" href="#peh_validation_library.error_report.error_schemas.ExceptionSchema">ExceptionSchema</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of exceptions that occurred during validation.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/peh_validation_library/error_report/error_schemas.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ErrorCollectorSchema</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Schema for collecting errors and exceptions during validation.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        error_reports (list[ErrorReportSchema]): List of error reports.</span>
+<span class="sd">        exceptions (list[ExceptionSchema]): List of exceptions that occurred during validation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+
+    <span class="n">error_reports</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ErrorReportSchema</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">exceptions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ExceptionSchema</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="peh_validation_library.error_report.error_schemas.ErrorReportSchema" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">ErrorReportSchema</span>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+
+
+        <p>Schema for error reports generated during validation.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ErrorReportSchema.name">name</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Name of the error report.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ErrorReportSchema.errors">errors</span></code></td>
+            <td>
+                  <code><span title="list">list</span>[<a class="autorefs autorefs-internal" title="            ErrorSchema (peh_validation_library.error_report.error_schemas.ErrorSchema)" href="#peh_validation_library.error_report.error_schemas.ErrorSchema">ErrorSchema</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of errors found in the DataFrame.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ErrorReportSchema.total_errors">total_errors</span></code></td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Total number of errors in the report.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ErrorReportSchema.id">id</span></code></td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Unique identifier for the error report.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/peh_validation_library/error_report/error_schemas.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ErrorReportSchema</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Schema for error reports generated during validation.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str): Name of the error report.</span>
+<span class="sd">        errors (list[ErrorSchema]): List of errors found in the DataFrame.</span>
+<span class="sd">        total_errors (int): Total number of errors in the report.</span>
+<span class="sd">        id (int): Unique identifier for the error report.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">errors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ErrorSchema</span><span class="p">]</span>
+    <span class="n">total_errors</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="peh_validation_library.error_report.error_schemas.ErrorSchema" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">ErrorSchema</span>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+
+
+        <p>Schema for errors that occur during DataFrame validation.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ErrorSchema.column_names">column_names</span></code></td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>] | <span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Names of the columns where the error occurred.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ErrorSchema.row_ids">row_ids</span></code></td>
+            <td>
+                  <code><span title="list">list</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>IDs of the rows where the error occurred.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ErrorSchema.idx_columns">idx_columns</span></code></td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Index columns used for identifying errors.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ErrorSchema.level">level</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Level of the error, e.g., 'error', 'warning'.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ErrorSchema.message">message</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Message describing the error.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ErrorSchema.title">title</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Title of the error.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/peh_validation_library/error_report/error_schemas.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ErrorSchema</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Schema for errors that occur during DataFrame validation.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        column_names (list[str] | str): Names of the columns where the error occurred.</span>
+<span class="sd">        row_ids (list[int]): IDs of the rows where the error occurred.</span>
+<span class="sd">        idx_columns (list[str]): Index columns used for identifying errors.</span>
+<span class="sd">        level (str): Level of the error, e.g., &#39;error&#39;, &#39;warning&#39;.</span>
+<span class="sd">        message (str): Message describing the error.</span>
+<span class="sd">        title (str): Title of the error.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+
+    <span class="n">column_names</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span>
+    <span class="n">row_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">idx_columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">level</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="peh_validation_library.error_report.error_schemas.ExceptionSchema" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">ExceptionSchema</span>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+
+
+        <p>Schema for exceptions that occur during validation.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ExceptionSchema.error_type">error_type</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Type of the error.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ExceptionSchema.error_message">error_message</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Message describing the error.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ExceptionSchema.error_level">error_level</span></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            ErrorLevel (peh_validation_library.core.utils.enums.ErrorLevel)" href="#peh_validation_library.core.utils.enums.ErrorLevel">ErrorLevel</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Level of the error.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ExceptionSchema.error_traceback">error_traceback</span></code></td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Traceback of the error.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ExceptionSchema.error_context">error_context</span></code></td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Context of the error, if available.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="peh_validation_library.error_report.error_schemas.ExceptionSchema.error_source">error_source</span></code></td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Source of the error, if available.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>src/peh_validation_library/error_report/error_schemas.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ExceptionSchema</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Schema for exceptions that occur during validation.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        error_type (str): Type of the error.</span>
+<span class="sd">        error_message (str): Message describing the error.</span>
+<span class="sd">        error_level (ErrorLevel): Level of the error.</span>
+<span class="sd">        error_traceback (str): Traceback of the error.</span>
+<span class="sd">        error_context (str | None): Context of the error, if available.</span>
+<span class="sd">        error_source (str | None): Source of the error, if available.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">error_type</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">error_message</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">error_level</span><span class="p">:</span> <span class="n">ErrorLevel</span>
+    <span class="n">error_traceback</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">error_context</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">error_source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
