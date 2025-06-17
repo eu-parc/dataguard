@@ -1,19 +1,16 @@
 name: DOCS
 
 on:
-  #pull_request:
-  #  branches: [master]
-  #  types:
-  #    - closed
   push:
     branches: ['*']
+  pull_request:
+    branches: [master]
 
 permissions:
   contents: write
 
 jobs:
   docs:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     strategy:
