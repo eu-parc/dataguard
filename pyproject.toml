@@ -1,7 +1,7 @@
 [project]
-name = "peh-validation-library"
+name = "dataguard"
 version = "0.1.0"
-description = "Add your description here"
+description = "A framework-agnostic data validation library for ensuring data quality and integrity"
 readme = "README.md"
 authors = [
     { name = "Caio Mescouto Terra de Souza", email = "caio.mescouto@vito.be" }
@@ -31,7 +31,7 @@ docs = [
 
 [tool.ruff]
 line-length = 79
-src = ["src/peh_validation_library"]
+src = ["src/dataguard"]
 extend-exclude = ["tests", "scripts", "notebooks", "data"]
 target-version = "py310"
 
@@ -40,7 +40,7 @@ preview = true
 select = ["F", "E", "W", "PL", "PT", "I001"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["peh_validation_library"]
+known-first-party = ["dataguard"]
 force-sort-within-sections = true
 
 [tool.ruff.format]

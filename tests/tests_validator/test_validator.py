@@ -3,9 +3,9 @@ import logging
 import pytest
 import polars as pl
 
-from peh_validation_library.validator.validator import Validator
-from peh_validation_library.error_report.error_collector import ErrorCollector
-from peh_validation_library.error_report.error_schemas import ExceptionSchema
+from dataguard.validator.validator import Validator
+from dataguard.error_report.error_collector import ErrorCollector
+from dataguard.error_report.error_schemas import ExceptionSchema
 
 @pytest.fixture
 def error_collector():

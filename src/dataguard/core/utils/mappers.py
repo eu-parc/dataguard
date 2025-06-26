@@ -1,6 +1,6 @@
 import polars as pl
 
-from peh_validation_library.core.utils.enums import (
+from dataguard.core.utils.enums import (
     CheckCases,
     ValidationType,
 )

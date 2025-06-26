@@ -2,16 +2,16 @@ from collections.abc import Mapping, Sequence
 
 from pydantic import ValidationError
 
-from peh_validation_library.core.check.schemas import (
+from dataguard.core.check.schemas import (
     CaseCheckExpression,
     SimpleCheckExpression,
 )
-from peh_validation_library.core.models.schemas import (
+from dataguard.core.models.schemas import (
     CheckSchema,
     ColSchema,
     DFSchema,
 )
-from peh_validation_library.core.utils.enums import ErrorLevel
+from dataguard.core.utils.enums import ErrorLevel
 
 
 def get_df_schema(

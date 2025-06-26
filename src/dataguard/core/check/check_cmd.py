@@ -4,11 +4,11 @@ from typing import Any
 import pandera.polars as pa
 import polars as pl
 
-from peh_validation_library.core.check.schemas import (
+from dataguard.core.check.schemas import (
     CaseCheckExpression,
     SimpleCheckExpression,
 )
-from peh_validation_library.core.utils.enums import CheckCases
+from dataguard.core.utils.enums import CheckCases
 
 CheckFn = Callable[[pa.PolarsData, Any], pl.Expr]
 

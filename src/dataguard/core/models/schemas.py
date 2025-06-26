@@ -7,19 +7,19 @@ import pandera.polars as pa
 import polars as pl
 from pydantic import BaseModel, ConfigDict
 
-from peh_validation_library.core.check.check_cmd import (
+from dataguard.core.check.check_cmd import (
     get_check_fn,
     get_expression,
 )
-from peh_validation_library.core.check.schemas import (
+from dataguard.core.check.schemas import (
     CaseCheckExpression,
     SimpleCheckExpression,
 )
-from peh_validation_library.core.utils.enums import (
+from dataguard.core.utils.enums import (
     ErrorLevel,
     ValidationType,
 )
-from peh_validation_library.core.utils.mappers import (
+from dataguard.core.utils.mappers import (
     expression_mapper,
     validation_type_mapper,
 )

@@ -6,8 +6,8 @@ import pandera.polars as pa
 import polars as pl
 from pydantic import BaseModel, Field
 
-from peh_validation_library.core.utils.enums import CheckCases
-from peh_validation_library.core.utils.mappers import (
+from dataguard.core.utils.enums import CheckCases
+from dataguard.core.utils.mappers import (
     expression_mapper,
 )
 
