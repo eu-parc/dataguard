@@ -1,7 +1,7 @@
 import pandera.polars as pa
 
-from peh_validation_library.core.models.schemas import CheckSchema, ColSchema, DFSchema
-from peh_validation_library.core.utils.enums import ValidationType, ErrorLevel
+from dataguard.core.models.schemas import CheckSchema, ColSchema, DFSchema
+from dataguard.core.utils.enums import ValidationType, ErrorLevel
 
 
 def test_df_schema_build():

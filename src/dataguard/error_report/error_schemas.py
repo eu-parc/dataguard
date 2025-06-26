@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from peh_validation_library.core.utils.enums import ErrorLevel
+from dataguard.core.utils.enums import ErrorLevel
 
 
 class ExceptionSchema(BaseModel):

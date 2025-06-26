@@ -5,7 +5,7 @@ from polars.testing.parametric import dataframes, column
 from polars.testing import assert_frame_equal
 from hypothesis import given, settings, strategies as st 
 
-from peh_validation_library.core.check.check_cmd import (
+from dataguard.core.check.check_cmd import (
     create_single_expression,
     get_single_expression,
     get_expression,
@@ -13,11 +13,11 @@ from peh_validation_library.core.check.check_cmd import (
     create_complex_expression,
     get_complex_expression,
 )
-from peh_validation_library.core.check.schemas import (
+from dataguard.core.check.schemas import (
     SimpleCheckExpression,
     CaseCheckExpression
 )
-from peh_validation_library.core.utils.enums import CheckCases
+from dataguard.core.utils.enums import CheckCases
 
 
 class TestCreateSingleColumnExpression:

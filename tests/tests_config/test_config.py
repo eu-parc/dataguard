@@ -1,6 +1,6 @@
 import pytest
-from peh_validation_library.config.config_reader import get_df_schema
-from peh_validation_library.core.models.schemas import DFSchema
+from dataguard.config.config_reader import get_df_schema
+from dataguard.core.models.schemas import DFSchema
 
 import pandera.polars as pa
 

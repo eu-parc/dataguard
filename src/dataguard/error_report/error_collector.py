@@ -2,13 +2,13 @@ from functools import cache
 
 import pandera.polars as pa
 
-from peh_validation_library.error_report.error_schemas import (
+from dataguard.error_report.error_schemas import (
     ErrorCollectorSchema,
     ErrorReportSchema,
     ErrorSchema,
     ExceptionSchema,
 )
-from peh_validation_library.error_report.utils import from_schema_error
+from dataguard.error_report.utils import from_schema_error
 
 
 @cache

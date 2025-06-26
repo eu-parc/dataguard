@@ -1,6 +1,6 @@
-site_name: PEH Validation Library
-repo_url: https://github.com/eu-parc/peh-validation-library
-repo_name: eu-parc/peh-validation-library
+site_name: DataGuard
+repo_url: https://github.com/eu-parc/dataguard
+repo_name: eu-parc/dataguard
 edit_uri: edit/master/docs/
 theme:
   name: material

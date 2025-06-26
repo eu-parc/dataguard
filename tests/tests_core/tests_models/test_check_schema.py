@@ -3,19 +3,19 @@ import importlib
 import pytest
 import pandera.polars as pa
 
-from peh_validation_library.core.check.schemas import (
+from dataguard.core.check.schemas import (
     SimpleCheckExpression,
     CaseCheckExpression,
 )
-from peh_validation_library.core.utils.enums import (
+from dataguard.core.utils.enums import (
     ErrorLevel,
     ValidationType,
 )
-from peh_validation_library.core.utils.mappers import (
+from dataguard.core.utils.mappers import (
     expression_mapper,
     validation_type_mapper,
 )
-from peh_validation_library.core.models.schemas import CheckSchema
+from dataguard.core.models.schemas import CheckSchema
 
 @pytest.mark.parametrize(
     'check_command, subject, arg_values, arg_columns', [

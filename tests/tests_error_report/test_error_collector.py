@@ -1,10 +1,10 @@
 import pytest
 
-from peh_validation_library.error_report.error_collector import ErrorCollector
-from peh_validation_library.error_report.error_schemas import (
+from dataguard.error_report.error_collector import ErrorCollector
+from dataguard.error_report.error_schemas import (
     ErrorSchema, ErrorReportSchema, ErrorCollectorSchema, ExceptionSchema
 )
-from peh_validation_library.core.utils.enums import ErrorLevel
+from dataguard.core.utils.enums import ErrorLevel
 
 
 @pytest.fixture
@@ -78,7 +78,7 @@ def test_add_schema_errors(error_collector, mock_schema_errors, monkeypatch):
         return ['test_column'], [1, 2, 3]
     
     monkeypatch.setattr(
-        'peh_validation_library.error_report.error_collector.from_schema_error',
+        'dataguard.error_report.error_collector.from_schema_error',
         mock_from_schema_error
     )
     
@@ -97,7 +97,7 @@ def test_multiple_error_reports(error_collector, mock_schema_error, monkeypatch)
         return ['test_column'], [1, 2, 3]
     
     monkeypatch.setattr(
-        'peh_validation_library.error_report.error_collector.from_schema_error',
+        'dataguard.error_report.error_collector.from_schema_error',
         mock_from_schema_error
     )
     
@@ -175,7 +175,7 @@ def test_various_column_formats(error_collector, mock_schema_error, monkeypatch,
         return column_names, row_ids
     
     monkeypatch.setattr(
-        'peh_validation_library.error_report.error_collector.from_schema_error',
+        'dataguard.error_report.error_collector.from_schema_error',
         mock_from_schema_error
     )
     
@@ -234,7 +234,7 @@ def test_error_counter_increments_correctly(error_collector, mock_schema_errors,
         return ['test_column'], [1, 2, 3]
     
     monkeypatch.setattr(
-        'peh_validation_library.error_report.error_collector.from_schema_error',
+        'dataguard.error_report.error_collector.from_schema_error',
         mock_from_schema_error
     )
     

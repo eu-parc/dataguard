@@ -1,7 +1,7 @@
 import polars as pl
 
 import pytest
-from peh_validation_library.dataframe.df_reader import read_dataframe
+from dataguard.dataframe.df_reader import read_dataframe
 
 
 def test_df_reader():

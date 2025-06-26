@@ -7,13 +7,13 @@ import traceback
 import pandera.polars as pa
 import polars as pl
 
-from peh_validation_library.config.config_reader import get_df_schema
-from peh_validation_library.core.utils.mappers import validation_type_mapper
-from peh_validation_library.dataframe.df_reader import read_dataframe
-from peh_validation_library.error_report.error_collector import (
+from dataguard.config.config_reader import get_df_schema
+from dataguard.core.utils.mappers import validation_type_mapper
+from dataguard.dataframe.df_reader import read_dataframe
+from dataguard.error_report.error_collector import (
     ErrorCollector,
 )
-from peh_validation_library.error_report.error_schemas import (
+from dataguard.error_report.error_schemas import (
     ExceptionSchema,
 )
 
