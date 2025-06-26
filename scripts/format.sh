@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-PREFIX='uv run'
+PREFIX='.venv/bin/python3.13 -m'
 
 ${PREFIX} ruff check . --fix && ${PREFIX} ruff format

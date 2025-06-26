@@ -26,3 +26,5 @@ notebooks/template_cb_24_quest.ipynb
 notebooks/val_design_yaml_to_py.ipynb
 
 .vscode/
+
+.coverage
