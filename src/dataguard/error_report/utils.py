@@ -2,7 +2,10 @@ import polars as pl
 
 
 def from_schema_error(schema_error):
-    row_ids = create_row_idx(schema_error.check_output)
+    try:
+        row_ids = create_row_idx(schema_error.check_output)
+    except AttributeError:
+        row_ids = []
     if getattr(schema_error.schema, 'columns', None):
         column_names = list(schema_error.schema.columns.keys())
         return column_names, row_ids
