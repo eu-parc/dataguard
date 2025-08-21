@@ -298,3 +298,24 @@ def test_cache_decorator_behavior():
     # Changes to one should affect the other
     collector1.COUNTER = 10
     assert collector2.COUNTER == 10
+
+
+def test_error_without_schema(error_collector):
+    class Schema:
+        columns = {'col1': 0, 'col2': 1}
+        name = "MockErrorWithoutSchema"
+        unique = ['col1', 'col2']
+        title = None
+    
+    class MockErrorWithoutSchema:
+        check_output = None
+        schema = Schema()
+
+        def __str__(self):
+            return "MockErrorWithoutSchema"
+    
+    error_collector.add_errors(MockErrorWithoutSchema())
+    
+    assert error_collector.COUNTER == 11
+    assert error_collector.get_errors().error_reports[0].errors[0].title is "MockErrorWithoutSchema"
+    assert error_collector.get_errors().error_reports[0].errors[0].column_names == ['col1', 'col2']

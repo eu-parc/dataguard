@@ -2,6 +2,7 @@ from functools import cache
 
 import pandera.polars as pa
 
+from dataguard.core.utils.enums import ErrorLevel
 from dataguard.error_report.error_schemas import (
     ErrorCollectorSchema,
     ErrorReportSchema,
@@ -71,15 +72,27 @@ class ErrorCollector:
                     )
 
         else:
-            column_names, row_ids = from_schema_error(err)
+            column_names, row_ids = from_schema_error(error)
             errors.append(
                 ErrorSchema(
                     column_names=column_names,
                     row_ids=row_ids,
                     idx_columns=error.schema.unique,
-                    level=error.schema.level,
-                    message=error.schema.message,
-                    title=error.schema.title,
+                    level=(
+                        error.schema.level
+                        if hasattr(error.schema, 'level')
+                        else ErrorLevel.CRITICAL.name
+                    ),
+                    message=(
+                        error.schema.message
+                        if hasattr(error.schema, 'message')
+                        else str(error)
+                    ),
+                    title=(
+                        error.schema.title
+                        if error.schema.title
+                        else error.schema.name
+                    ),
                 )
             )
 
