@@ -20,7 +20,7 @@ class ExceptionSchema(BaseModel):
     error_message: str
     error_level: ErrorLevel
     error_traceback: str
-    error_context: str | None = None
+    error_context: list[str] | None = None
     error_source: str | None = None
 
 

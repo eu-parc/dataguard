@@ -182,5 +182,74 @@ def test_validator_validate_exception(error_collector, fake_check_fn):
     assert len(error_collector.get_errors().exceptions) == 1
     assert len(error_collector.get_errors().error_reports) == 0
     assert error_collector.get_errors().exceptions[0].error_type == 'InvalidOperationError'
+    assert 'polars/lazyframe/frame.py:2224:collect' in error_collector.get_errors().exceptions[0].error_source
 
+
+def test_validator_validate_exception_eager(error_collector, fake_check_fn):
+    conf_input = {
+        'name': 'test_config',
+        'columns': (
+            {
+            'id': 'test_column',
+            'data_type': 'integer',
+            'nullable': False,
+            'unique': True,
+            'required': True,
+            'checks': [
+                {
+                    'check_case': 'condition',
+                    'expressions': [
+                        {
+                        'command': 'is_in', 
+                        'arg_values': [0, 1, 2]
+                        },
+                        {
+                        'command': 'is_equal_to', 
+                        'subject': ['second_column'], 
+                        'arg_values': [1]
+                        }
+                    ]
+                },
+                {
+                    'command': fake_check_fn,
+                    'arg_values': [0, 1],
+                    'arg_columns': None
+                }
+            ]
+            },
+            {
+            'id': 'second_column',
+            'data_type': 'integer',
+            'nullable': True,
+            'unique': False,
+            'required': False,
+            'checks': [
+                {
+                    'command': 'is_equal_to',
+                    'arg_columns': ['test_column'],
+                }
+            ]
+        }
+        ),
+        'ids': ['test_column'],
+        'metadata': {'meta_key': 'meta_value'},
+        'checks': [
+            {
+                'command': 'is_in',
+                'subject': ['test_column', 'second_column'],
+                'arg_values': [1, 2]
+            }
+        ]
+    }
+
+    dataframe = {
+        "test_column": ['a', 'b', 'c'],  # Invalid data type for integer check
+        "second_column": [3, 2, 1]
+    }
+    
+    validator = Validator.config_from_mapping(config=conf_input)
+
+    with pytest.raises(pl.exceptions.InvalidOperationError):
+        validator.validate(dataframe, collect_exceptions=False)
+    
     
