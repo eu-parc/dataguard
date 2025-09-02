@@ -14,6 +14,7 @@ validation_type_mapper = {
     ValidationType.STR: pl.Utf8,
     # Cannot cast numerical to categorical, so reling on String
     ValidationType.CAT: pl.Utf8,
+    ValidationType.DECIMAL: pl.Decimal,
 }
 
 check_cases_mapper = {

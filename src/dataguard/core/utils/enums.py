@@ -23,10 +23,11 @@ class ValidationType(Enum):
     DATE = 'date'
     DATETIME = 'datetime'
     BOOL = 'boolean'
-    FLOAT = 'decimal'
+    FLOAT = 'float'
     INT = 'integer'
-    STR = 'varchar'
+    STR = 'string'
     CAT = 'categorical'
+    DECIMAL = 'decimal'
 
 
 class CheckCases(Enum):
