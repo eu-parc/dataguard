@@ -1,4 +1,5 @@
 import polars as pl
+from polars.exceptions import ShapeError, SchemaError
 
 import pytest
 from dataguard.dataframe.df_reader import read_dataframe
@@ -64,10 +65,8 @@ def test_df_reader_invalid_data_shape():
         'col_c': [True, False, True],
     }
 
-    with pytest.raises(RuntimeError) as err:
+    with pytest.raises(ShapeError):
         read_dataframe(df)
-    
-    assert "Error reading dataframe" in str(err.value)
 
 
 def test_df_reader_invalid_data_schema():
@@ -83,24 +82,18 @@ def test_df_reader_invalid_data_schema():
         'col_c': pl.Boolean,
     }
 
-    with pytest.raises(RuntimeError) as err:
+    with pytest.raises(TypeError):
         read_dataframe(df, schema=schema)
-    
-    assert "Error reading dataframe:" in str(err.value)
 
 
 def test_df_reader_invalid_data_object():
     df = list(range(10))
 
-    with pytest.raises(RuntimeError) as err:
+    with pytest.raises(AttributeError):
         read_dataframe(df)
-    
-    assert "Error reading dataframe:" in str(err.value)
 
 
 def test_df_reader_none_data_object():
 
-    with pytest.raises(RuntimeError) as err:
+    with pytest.raises(AttributeError):
         read_dataframe(None)
-    
-    assert "Error reading dataframe:" in str(err.value)

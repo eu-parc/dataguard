@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
 import logging
-import traceback
 
 import pandera.polars as pa
 import polars as pl
@@ -13,8 +12,8 @@ from dataguard.dataframe.df_reader import read_dataframe
 from dataguard.error_report.error_collector import (
     ErrorCollector,
 )
-from dataguard.error_report.error_schemas import (
-    ExceptionSchema,
+from dataguard.error_report.utils import (
+    exception_handler,
 )
 
 logger = logging.getLogger(__name__)
@@ -130,23 +129,15 @@ class Validator:
             validator.df_schema = get_df_schema(config)
 
         except Exception as err:
-            msg = f'Error reading inputs: {err}'
-            logger.error(msg)
-
-            if not collect_exceptions:
-                raise err
-
-            error_traceback = traceback.format_exc()
-            validator.error_collector.add_errors(
-                ExceptionSchema(
-                    error_type=type(err).__name__,
-                    error_message=str(err),
-                    error_level='critical',
-                    error_traceback=error_traceback,
-                    error_context='Validator.config_from_mapping',
-                    error_source=__name__,
-                )
+            exc = exception_handler(
+                err=err,
+                return_exception=collect_exceptions,
+                err_msg='Error reading inputs',
+                err_level='critical',
+                logger=logger,
             )
+
+            validator.error_collector.add_errors(exc)
 
         logger.info('DFSchema created successfully')
         return validator
@@ -161,23 +152,15 @@ class Validator:
         try:
             return read_dataframe(dataframe)
         except Exception as err:
-            msg = f'Error converting dataframe: {err}'
-            logger.error(msg)
-
-            if not collect_exceptions:
-                raise err
-
-            error_traceback = traceback.format_exc()
-            self.error_collector.add_errors(
-                ExceptionSchema(
-                    error_type=type(err).__name__,
-                    error_message=str(err),
-                    error_level='critical',
-                    error_traceback=error_traceback,
-                    error_context='Validator.convert_mapping_to_dataframe',
-                    error_source=__name__,
-                )
+            exc = exception_handler(
+                err=err,
+                return_exception=collect_exceptions,
+                err_msg='Error reading inputs',
+                err_level='critical',
+                logger=logger,
             )
+
+            self.error_collector.add_errors(exc)
 
     def validate(
         self,
@@ -215,23 +198,15 @@ class Validator:
             logger.info(f'Building DataFrame schema {self.df_schema.name =}')
             df_schema = self.df_schema.build()
         except Exception as err:
-            msg = f'Error building dataframe schema: {err}'
-            logger.error(msg)
-
-            if not collect_exceptions:
-                raise err
-
-            error_traceback = traceback.format_exc()
-            self.error_collector.add_errors(
-                ExceptionSchema(
-                    error_type=type(err).__name__,
-                    error_message=str(err),
-                    error_level='critical',
-                    error_traceback=error_traceback,
-                    error_context='Validator.validate',
-                    error_source=__name__,
-                )
+            exc = exception_handler(
+                err=err,
+                return_exception=collect_exceptions,
+                err_msg='Error reading inputs',
+                err_level='critical',
+                logger=logger,
             )
+
+            self.error_collector.add_errors(exc)
             return
 
         try:
@@ -243,23 +218,15 @@ class Validator:
             })
 
         except Exception as err:
-            msg = f'Error casting dataframe types: {err}'
-            logger.error(msg)
-
-            if not collect_exceptions:
-                raise err
-
-            error_traceback = traceback.format_exc()
-            self.error_collector.add_errors(
-                ExceptionSchema(
-                    error_type=type(err).__name__,
-                    error_message=str(err),
-                    error_level='critical',
-                    error_traceback=error_traceback,
-                    error_context='Validator.validate',
-                    error_source=__name__,
-                )
+            exc = exception_handler(
+                err=err,
+                return_exception=collect_exceptions,
+                err_msg='Error reading inputs',
+                err_level='critical',
+                logger=logger,
             )
+
+            self.error_collector.add_errors(exc)
             return
 
         try:
@@ -289,22 +256,14 @@ class Validator:
                 self.error_collector.add_errors(err)
 
         except Exception as err:
-            msg = f'Error validating dataframe: {err}'
-            logger.error(msg)
-
-            if not collect_exceptions:
-                raise err
-
-            error_traceback = traceback.format_exc()
-            self.error_collector.add_errors(
-                ExceptionSchema(
-                    error_type=type(err).__name__,
-                    error_message=str(err),
-                    error_level='critical',
-                    error_traceback=error_traceback,
-                    error_context='Validator.validate',
-                    error_source=__name__,
-                )
+            exc = exception_handler(
+                err=err,
+                return_exception=collect_exceptions,
+                err_msg='Error reading inputs',
+                err_level='critical',
+                logger=logger,
             )
+
+            self.error_collector.add_errors(exc)
 
         logger.info('DataFrame validation completed')

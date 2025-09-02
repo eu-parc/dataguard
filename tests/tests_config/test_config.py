@@ -3,6 +3,7 @@ from dataguard.config.config_reader import get_df_schema
 from dataguard.core.models.schemas import DFSchema
 
 import pandera.polars as pa
+from pydantic import ValidationError
 
 
 def test_get_config():
@@ -112,10 +113,8 @@ def test_invalid_config_mapping():
         )
     }
 
-    with pytest.raises(RuntimeError) as err:
+    with pytest.raises(KeyError):
         get_df_schema(invalid_conf_input)
-    
-    assert "Error reading configuration:" in str(err.value)
 
 
 def test_get_config_break_check():
@@ -165,10 +164,8 @@ def test_get_config_break_check():
         )
     }
 
-    with pytest.raises(RuntimeError) as err:
+    with pytest.raises(ValidationError):
         get_df_schema(conf_input)
-
-    assert "Error reading configuration:" in str(err.value)
 
 
 def test_get_config_validation_error():
@@ -218,8 +215,6 @@ def test_get_config_validation_error():
         )
     }
 
-    with pytest.raises(RuntimeError) as err:
+    with pytest.raises(ValidationError):
         get_df_schema(conf_input)
-
-    assert "Error reading configuration:" in str(err.value)
 

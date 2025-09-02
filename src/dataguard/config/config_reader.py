@@ -17,20 +17,17 @@ from dataguard.core.utils.enums import ErrorLevel
 def get_df_schema(
     config_input: Mapping[str, str | Sequence | Mapping],
 ) -> DFSchema:
-    try:
-        return DFSchema(
-            name=config_input['name'],
-            columns=parse_columns(config_input['columns']),
-            ids=(list(config_input['ids']) if 'ids' in config_input else None),
-            metadata=config_input.get('metadata', None),
-            checks=(
-                parse_checks(config_input['checks'])
-                if 'checks' in config_input
-                else None
-            ),
-        )
-    except (KeyError, TypeError, ValidationError, IndexError) as err:
-        raise RuntimeError(f'Error reading configuration: {err}') from err
+    return DFSchema(
+        name=config_input['name'],
+        columns=parse_columns(config_input['columns']),
+        ids=(list(config_input['ids']) if 'ids' in config_input else None),
+        metadata=config_input.get('metadata', None),
+        checks=(
+            parse_checks(config_input['checks'])
+            if 'checks' in config_input
+            else None
+        ),
+    )
 
 
 def parse_checks(
