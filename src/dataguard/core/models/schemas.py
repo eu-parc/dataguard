@@ -72,9 +72,7 @@ class CheckSchema(BaseModel):
         args_ = check_command.get_args()
 
         if hasattr(check_command, 'check_case'):
-            for expression in check_command.expressions:
-                expression.map_command()
-            exp = get_expression(check_command)
+            exp = get_case_check(check_command)
             return cls(
                 name=name,
                 fn=partial(get_check_fn, exp=exp),
@@ -118,6 +116,15 @@ class CheckSchema(BaseModel):
             error=self.error_msg,
             statistics={'args_': self.args_},
         )
+
+
+def get_case_check(check_command: CaseCheckExpression) -> str:
+    for expression in check_command.expressions:
+        if hasattr(expression, 'map_command'):
+            expression.map_command()
+            return get_expression(check_command)
+        else:
+            get_case_check(expression)
 
 
 class ColSchema(BaseModel):
