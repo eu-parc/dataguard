@@ -53,11 +53,33 @@ def test_build_validator_success(error_collector, fake_check_fn):
                     'command': fake_check_fn,
                     'arg_values': [0, 1],
                     'arg_columns': None
+                },
+                {
+                    'check_case': 'condition',
+                    'expressions': [
+                        {
+                            'check_case': 'conjunction',
+                            'expressions': [
+                                {
+                                    'command': 'is_not_null',
+                                },
+                                {
+                                    'command': 'is_in',
+                                    'arg_values': [1, 2, 3]
+                                },
+                            ]
+                        },
+                        {
+                            'command': 'is_equal_to',
+                            'arg_values': [1],
+                            'subject': ['second_column']
+                        }
+                    ]
                 }
-            ]
-            },
-            {
-            'id': 'second_column',
+                ]
+                },
+                {
+                    'id': 'second_column',
             'data_type': 'integer',
             'nullable': False,
             'unique': False,
@@ -89,10 +111,10 @@ def test_build_validator_success(error_collector, fake_check_fn):
     validator = Validator.config_from_mapping(config=conf_input)
     
     validator.validate(dataframe)
-    
+
     assert validator is not None
     assert validator.df_schema is not None
-    assert len(error_collector.get_errors().error_reports[0].errors) == 6
+    assert len(error_collector.get_errors().error_reports[0].errors) == 7
     
 
 def test_build_validator_error_handling(error_collector):

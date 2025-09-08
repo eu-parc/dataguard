@@ -103,6 +103,30 @@ def test_get_schema_simple_check_module():
                 arg_columns=['col_2']
             )
         ]),
+        ('condition', [
+            CaseCheckExpression(
+                check_case='conjunction',
+                expressions=[
+            SimpleCheckExpression(
+                command='is_equal_to',
+                subject=None,
+                arg_values=[1],
+                arg_columns=None
+            ),
+            SimpleCheckExpression(
+                command='is_equal_to',
+                subject=None,
+                arg_values=None,
+                arg_columns=['col_2']
+            )
+        ]),
+            SimpleCheckExpression(
+                command='is_equal_to',
+                subject=None,
+                arg_values=None,
+                arg_columns=['col_2']
+            )
+        ]),
     ]
 )
 def test_get_schema_case_check(check_case, expressions):
