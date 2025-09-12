@@ -122,9 +122,9 @@ def get_case_check(check_command: CaseCheckExpression) -> str:
     for expression in check_command.expressions:
         if hasattr(expression, 'map_command'):
             expression.map_command()
-            return get_expression(check_command)
         else:
             get_case_check(expression)
+    return get_expression(check_command)
 
 
 class ColSchema(BaseModel):
@@ -152,7 +152,7 @@ class ColSchema(BaseModel):
             validation_type_mapper[self.data_type],
             nullable=self.nullable,
             unique=self.unique,
-            coerce=False,
+            coerce=True,
             required=self.required,
             checks=(
                 [check.build() for check in self.checks]

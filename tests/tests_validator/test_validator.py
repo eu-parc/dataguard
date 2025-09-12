@@ -2,6 +2,7 @@ import logging
 
 import pytest
 import polars as pl
+import pandera.polars as pa
 
 from dataguard.validator.validator import Validator
 from dataguard.error_report.error_collector import ErrorCollector
@@ -135,7 +136,7 @@ def test_build_validator_error_handling(error_collector):
     assert error.error_level.name == 'CRITICAL'
 
 
-def test_validator_validate_exception(error_collector, fake_check_fn):
+def test_validator_validate_dtype_error(error_collector, fake_check_fn):
     conf_input = {
         'name': 'test_config',
         'columns': (
@@ -200,11 +201,8 @@ def test_validator_validate_exception(error_collector, fake_check_fn):
     validator = Validator.config_from_mapping(config=conf_input)
 
     validator.validate(dataframe)
-    
-    assert len(error_collector.get_errors().exceptions) == 1
-    assert len(error_collector.get_errors().error_reports) == 0
-    assert error_collector.get_errors().exceptions[0].error_type == 'InvalidOperationError'
-    assert 'polars/lazyframe/frame.py:2224:collect' in error_collector.get_errors().exceptions[0].error_source
+
+    assert len(error_collector.get_errors().error_reports[0].errors) == 6
 
 
 def test_validator_validate_exception_eager(error_collector, fake_check_fn):
@@ -271,7 +269,7 @@ def test_validator_validate_exception_eager(error_collector, fake_check_fn):
     
     validator = Validator.config_from_mapping(config=conf_input)
 
-    with pytest.raises(pl.exceptions.InvalidOperationError):
+    with pytest.raises(pa.errors.SchemaError) as exc_info:
         validator.validate(dataframe, collect_exceptions=False)
     
     

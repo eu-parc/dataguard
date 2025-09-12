@@ -14,7 +14,7 @@ def from_schema_error(schema_error):
     if getattr(schema_error.schema, 'columns', None):
         column_names = list(schema_error.schema.columns.keys())
         return column_names, row_ids
-    return schema_error.schema.name, row_ids
+    return getattr(schema_error.schema, 'name', None), row_ids
 
 
 def create_row_idx(df) -> list[int]:
