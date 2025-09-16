@@ -7,7 +7,6 @@ import pandera.polars as pa
 import polars as pl
 
 from dataguard.config.config_reader import get_df_schema
-from dataguard.core.utils.mappers import validation_type_mapper
 from dataguard.dataframe.df_reader import read_dataframe
 from dataguard.error_report.error_collector import (
     ErrorCollector,
@@ -132,7 +131,7 @@ class Validator:
             exc = exception_handler(
                 err=err,
                 return_exception=collect_exceptions,
-                err_msg='Error reading inputs',
+                err_msg='Error reading configuration input',
                 err_level='critical',
                 logger=logger,
             )
@@ -155,7 +154,7 @@ class Validator:
             exc = exception_handler(
                 err=err,
                 return_exception=collect_exceptions,
-                err_msg='Error reading inputs',
+                err_msg='Error reading dataframe input',
                 err_level='critical',
                 logger=logger,
             )
@@ -165,7 +164,6 @@ class Validator:
     def validate(
         self,
         dataframe: Mapping[str, list] | pl.DataFrame,
-        lazy_validation: bool = True,
         collect_exceptions: bool = True,
         logger: logging.Logger = logger,
     ) -> None:
@@ -201,27 +199,7 @@ class Validator:
             exc = exception_handler(
                 err=err,
                 return_exception=collect_exceptions,
-                err_msg='Error reading inputs',
-                err_level='critical',
-                logger=logger,
-            )
-
-            self.error_collector.add_errors(exc)
-            return
-
-        try:
-            logger.info('Casting DataFrame Types')
-            dataframe = dataframe.cast({
-                col.id: validation_type_mapper[col.data_type]
-                for col in self.df_schema.columns
-                if col.id in dataframe.columns
-            })
-
-        except Exception as err:
-            exc = exception_handler(
-                err=err,
-                return_exception=collect_exceptions,
-                err_msg='Error reading inputs',
+                err_msg='Error building DataFrame schema from configuration',
                 err_level='critical',
                 logger=logger,
             )
@@ -231,7 +209,7 @@ class Validator:
 
         try:
             logger.info('Starting DataFrame validation')
-            dataframe.pipe(df_schema.validate, lazy=lazy_validation)
+            dataframe.pipe(df_schema.validate, lazy=collect_exceptions)
 
         except (pa.errors.SchemaErrors, pa.errors.SchemaError) as err:
             if not collect_exceptions:
@@ -259,7 +237,7 @@ class Validator:
             exc = exception_handler(
                 err=err,
                 return_exception=collect_exceptions,
-                err_msg='Error reading inputs',
+                err_msg='Error while validating dataframe',
                 err_level='critical',
                 logger=logger,
             )

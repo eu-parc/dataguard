@@ -48,7 +48,19 @@ class ErrorCollector:
             for err in error.schema_errors:
                 column_names, row_ids = from_schema_error(err)
 
-                if not isinstance(err.check, str):
+                if len(row_ids) == 0:
+                    errors.append(
+                        ErrorSchema(
+                            column_names=column_names,
+                            row_ids=row_ids,
+                            idx_columns=idx_columns,
+                            level='critical',
+                            message=str(err),
+                            title=str(err.reason_code),
+                        )
+                    )
+
+                elif not isinstance(err.check, str):
                     errors.append(
                         ErrorSchema(
                             column_names=column_names,
@@ -71,13 +83,21 @@ class ErrorCollector:
                         )
                     )
 
+        # elif isinstance(error, ErrorSchema):
+        #    errors.append(error)
+
         else:
             column_names, row_ids = from_schema_error(error)
+
             errors.append(
                 ErrorSchema(
                     column_names=column_names,
                     row_ids=row_ids,
-                    idx_columns=error.schema.unique,
+                    idx_columns=(
+                        error.schema.unique
+                        if hasattr(error.schema, 'unique')
+                        else []
+                    ),
                     level=(
                         error.schema.level
                         if hasattr(error.schema, 'level')
@@ -99,7 +119,11 @@ class ErrorCollector:
         if len(errors) > 0:
             self.__errors.append(
                 ErrorReportSchema(
-                    name=error.schema.name,
+                    name=(
+                        error.schema.name
+                        if hasattr(error.schema, 'name')
+                        else error.message
+                    ),
                     errors=errors,
                     total_errors=len(errors),
                     id=self.COUNTER,
