@@ -1,30 +1,51 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 from dataguard.core.utils.enums import ErrorLevel
 
 
-class ExceptionSchema(BaseModel):
-    """Schema for exceptions that occur during validation.
+class BasicExceptionSchema(BaseModel):
+    """Basic schema for exceptions.
 
     Attributes:
-        error_type (str): Type of the error.
-        error_message (str): Message describing the error.
-        error_level (ErrorLevel): Level of the error.
-        error_traceback (str): Traceback of the error.
-        error_context (str | None): Context of the error, if available.
-        error_source (str | None): Source of the error, if available.
+        type (str): Type of the error.
+        message (str): Message describing the error.
 
     """
 
-    error_type: str
-    error_message: str
-    error_level: ErrorLevel
-    error_traceback: str
-    error_context: list[str] | None = None
-    error_source: str | None = None
+    type: str
+    message: str
+    level: ErrorLevel
 
 
-class ErrorSchema(BaseModel):
+class ExceptionSchema(BasicExceptionSchema):
+    """Schema for unknown exceptions that occur during validation.
+
+    Attributes:
+        type (str): Type of the error.
+        message (str): Message describing the error.
+        level (ErrorLevel): Level of the error.
+        traceback (str): Traceback of the error.
+
+    """
+
+    traceback: str
+
+
+class ErrorSchema(BasicExceptionSchema):
+    """Schema for errors that occur during validation.
+
+    Attributes:
+        type (str): Type of the error.
+        message (str): Message describing the error.
+        title (str): Title of the error.
+        traceback (str): Traceback of the error.
+    """
+
+    title: str
+    traceback: str
+
+
+class DFErrorSchema(ErrorSchema):
     """Schema for errors that occur during DataFrame validation.
 
     Attributes:
@@ -37,12 +58,11 @@ class ErrorSchema(BaseModel):
 
     """  # noqa: E501
 
-    column_names: list[str] | str
+    column_names: list[str]
     row_ids: list[int]
     idx_columns: list[str]
-    level: str
-    message: str
     title: str
+    traceback: str | None = None
 
 
 class ErrorReportSchema(BaseModel):
@@ -59,7 +79,9 @@ class ErrorReportSchema(BaseModel):
     name: str
     errors: list[ErrorSchema]
     total_errors: int
-    id: int
+    id: str
+
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
 
 class ErrorCollectorSchema(BaseModel):

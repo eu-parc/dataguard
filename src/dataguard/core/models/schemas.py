@@ -152,7 +152,7 @@ class ColSchema(BaseModel):
             validation_type_mapper[self.data_type],
             nullable=self.nullable,
             unique=self.unique,
-            coerce=True,
+            coerce=False,
             required=self.required,
             checks=(
                 [check.build() for check in self.checks]
