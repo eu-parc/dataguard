@@ -1,15 +1,10 @@
 from functools import cache
 
-import pandera.polars as pa
-
-from dataguard.core.utils.enums import ErrorLevel
 from dataguard.error_report.error_schemas import (
     ErrorCollectorSchema,
     ErrorReportSchema,
-    ErrorSchema,
     ExceptionSchema,
 )
-from dataguard.error_report.utils import from_schema_error
 
 
 @cache
@@ -22,114 +17,36 @@ class ErrorCollector:
         self.__errors = []
         self.__exceptions = []
 
-    def add_errors(
+    def add_unknown_exception(
         self,
-        error: ExceptionSchema
-        | pa.errors.SchemaError
-        | pa.errors.SchemaErrors,  # noqa: E501
+        exception: ExceptionSchema,
     ) -> None:
-        """Adds errors to the collector.
+        """Adds an unknown exception to the collector.
 
         Args:
-            error (ExceptionSchema | pa.errors.SchemaError | pa.errors.SchemaErrors): The error to add.
+            exception (ExceptionSchema): The exception to add.
 
         Returns:
             None
 
-        """  # noqa: E501
-        if getattr(error, 'error_traceback', None):
-            self.__exceptions.append(error)
-            return
+        """
+        self.__exceptions.append(exception)
 
-        errors = []
+    def add_error_report(
+        self,
+        error_report: ErrorReportSchema,
+    ) -> None:
+        """Adds an error report to the collector.
 
-        if getattr(error, 'schema_errors', None):
-            idx_columns = error.schema.unique
-            for err in error.schema_errors:
-                column_names, row_ids = from_schema_error(err)
+        Args:
+            error_report (ErrorReportSchema): The error report to add.
 
-                if len(row_ids) == 0:
-                    errors.append(
-                        ErrorSchema(
-                            column_names=column_names,
-                            row_ids=row_ids,
-                            idx_columns=idx_columns,
-                            level='critical',
-                            message=str(err),
-                            title=str(err.reason_code),
-                        )
-                    )
+        Returns:
+            None
 
-                elif not isinstance(err.check, str):
-                    errors.append(
-                        ErrorSchema(
-                            column_names=column_names,
-                            row_ids=row_ids,
-                            idx_columns=idx_columns,
-                            level=err.check.name,
-                            message=err.check.error,
-                            title=err.check.title,
-                        )
-                    )
-                else:
-                    errors.append(
-                        ErrorSchema(
-                            column_names=column_names,
-                            row_ids=row_ids,
-                            idx_columns=idx_columns,
-                            level='error',
-                            message=err.check,
-                            title=err.check,
-                        )
-                    )
-
-        # elif isinstance(error, ErrorSchema):
-        #    errors.append(error)
-
-        else:
-            column_names, row_ids = from_schema_error(error)
-
-            errors.append(
-                ErrorSchema(
-                    column_names=column_names,
-                    row_ids=row_ids,
-                    idx_columns=(
-                        error.schema.unique
-                        if hasattr(error.schema, 'unique')
-                        else []
-                    ),
-                    level=(
-                        error.schema.level
-                        if hasattr(error.schema, 'level')
-                        else ErrorLevel.CRITICAL.name
-                    ),
-                    message=(
-                        error.schema.message
-                        if hasattr(error.schema, 'message')
-                        else str(error)
-                    ),
-                    title=(
-                        error.schema.title
-                        if error.schema.title
-                        else error.schema.name
-                    ),
-                )
-            )
-
-        if len(errors) > 0:
-            self.__errors.append(
-                ErrorReportSchema(
-                    name=(
-                        error.schema.name
-                        if hasattr(error.schema, 'name')
-                        else error.message
-                    ),
-                    errors=errors,
-                    total_errors=len(errors),
-                    id=self.COUNTER,
-                )
-            )
-            self.COUNTER += len(errors)
+        """
+        self.__errors.append(error_report)
+        self.COUNTER += error_report.total_errors
 
     def get_errors(self) -> ErrorCollectorSchema:
         """Returns the collected errors and exceptions.

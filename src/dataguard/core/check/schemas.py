@@ -39,13 +39,13 @@ class SimpleCheckExpression(BaseModel):
 
         if self.subject:
             msg = (
-                f'Column(s) {self.get_args_string(self.subject)} '
+                f'Column(s) {get_args_string(self.subject)} '
                 f'{self.get_check_title().lower()}'
             )
         if self.arg_values:
-            msg += f' {self.get_args_string(self.arg_values)}'
+            msg += f' {get_args_string(self.arg_values)}'
         elif self.arg_columns:
-            msg += f' {self.get_args_string(self.arg_columns)}'
+            msg += f' {get_args_string(self.arg_columns)}'
         return msg
 
     def map_command(self) -> str:
@@ -61,13 +61,13 @@ class SimpleCheckExpression(BaseModel):
             args['arg_columns'] = self.arg_columns
         return args
 
-    @staticmethod
-    def get_args_string(args: list[Any]) -> str:
-        if not args:
-            return ''
-        if len(args) == 1:
-            return f'"{args[0]}"'
-        return args
+
+def get_args_string(args: list[Any]) -> str:
+    if not args:
+        return ''
+    if len(args) == 1:
+        return f'"{args[0]}"'
+    return args
 
 
 class CaseCheckExpression(BaseModel):
