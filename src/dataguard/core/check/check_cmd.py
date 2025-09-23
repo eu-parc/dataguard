@@ -34,8 +34,13 @@ def create_single_expression(
     if arg_values := simple_check_expr.arg_values:
         if len(arg_values) == 1:
             exp_arg = arg_values[0]
-        else:
+        # Due to Polars API, eq needs a Series for multiple values
+        # https://github.com/pola-rs/polars/pull/22178
+        # https://github.com/pola-rs/polars/issues/22149
+        elif simple_check_expr.command == 'eq':
             exp_arg = pl.Series(values=arg_values)
+        else:
+            exp_arg = arg_values
 
     if arg_column := simple_check_expr.arg_columns:
         exp_arg = pl.col(arg_column[0])
@@ -80,7 +85,8 @@ def create_complex_expression(
             return exp_1.and_(exp_2)
         case CheckCases.DISJUNCTION:
             return exp_1.or_(exp_2)
-        case _:
+        case _:  # pragma: no cover
+            # This is unreachable due to pydantic validation
             raise ValueError(
                 f'Invalid check_case: {case_check_expr.check_case}'
             )

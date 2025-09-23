@@ -659,7 +659,7 @@ def test_validator_before_pandera_validation(
     (   ### INIT ###
         ## Config
         {
-            'name': 'DF check - Check Error - invalid check command',
+            'name': 'DF check - Check Error - invalid check command', # Makes the PolarsData.key type into a string, where the default key is "*" (select all columns) by default. #1972 Pandera change
             'columns': [{
                 'id': 'col1',
                 'data_type': 'float',
@@ -706,7 +706,8 @@ def test_validator_before_pandera_validation(
         'total_errors': [1],
         'error_levels': ['ERROR'],  
         'error_types': [
-            'SchemaErrorReason.CHECK_ERROR',
+            # #1972 Pandera bugfix
+            'SchemaErrorReason.DATAFRAME_CHECK',
         ],
         'len_exceptions': 0,
         'exception_levels': [],
@@ -737,6 +738,7 @@ def test_validator_before_pandera_validation(
                         {
                         'command': 'is_greater_than', 
                         'arg_values': [2],
+                        # #1972 Pandera bugfix - "*" is default key that selects all columns
                         #'subject': ['col1', 'col2'] # Must especify subject at this level,
                         'error_level': 'critical', # Stop processing further errors if this one fails
                         },
@@ -760,7 +762,7 @@ def test_validator_before_pandera_validation(
         'error_types': [
             'SchemaErrorReason.SERIES_CONTAINS_NULLS',
             'SchemaErrorReason.SERIES_CONTAINS_DUPLICATES',
-            'SchemaErrorReason.CHECK_ERROR',
+            'SchemaErrorReason.DATAFRAME_CHECK',
         ],
         'len_exceptions': 0,
         'exception_levels': [],

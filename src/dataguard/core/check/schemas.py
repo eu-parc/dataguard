@@ -63,8 +63,6 @@ class SimpleCheckExpression(BaseModel):
 
 
 def get_args_string(args: list[Any]) -> str:
-    if not args:
-        return ''
     if len(args) == 1:
         return f'"{args[0]}"'
     return args
@@ -95,7 +93,8 @@ class CaseCheckExpression(BaseModel):
                 return f'{" and ".join([e.get_check_title() for e in self.expressions])}'  # noqa: E501
             case CheckCases.DISJUNCTION:
                 return f'{" or ".join([e.get_check_title() for e in self.expressions])}'  # noqa: E501
-            case _:
+            case _:  # pragma: no cover
+                # This is unreachable due to pydantic validation
                 raise ValueError(f'Unknown check case: {self.check_case}')
 
     def get_check_message(self) -> str:
@@ -109,7 +108,8 @@ class CaseCheckExpression(BaseModel):
                 return f'{" and ".join([e.get_check_message() for e in self.expressions])}'  # noqa: E501
             case CheckCases.DISJUNCTION:
                 return f'{" or ".join([e.get_check_message() for e in self.expressions])}'  # noqa: E501
-            case _:
+            case _:  # pragma: no cover
+                # This is unreachable due to pydantic validation
                 raise ValueError(f'Unknown check case: {self.check_case}')
 
     def get_args(self) -> dict[str, Any]:

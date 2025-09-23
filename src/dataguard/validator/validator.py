@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
 import logging
+import warnings
 
 import pandera.polars as pa
 import polars as pl
@@ -17,6 +18,13 @@ from dataguard.error_report.handlers import (
     error_handler,
     exception_handler,
     pandera_schema_errors_handler,
+)
+
+warnings.filterwarnings(
+    'ignore',
+    category=UserWarning,
+    module='pandera',
+    message='unique_column_names=True will have no effect on validation since polars DataFrames do not support duplicate column names.',  # noqa: E501
 )
 
 logger = logging.getLogger(__name__)
@@ -98,10 +106,6 @@ class Validator:
         Returns:
             Validator: An instance of the Validator class with the schema
                 created from the provided configuration mapping.
-
-        Raises:
-            Exception: If an error occurs while reading the configuration
-                or creating the schema, and collect_exceptions is False.
 
         """
         validator = cls()

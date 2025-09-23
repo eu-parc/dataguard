@@ -563,6 +563,46 @@ class TestCreateComplexExpression:
             )
         ).collect()
         assert_frame_equal(result, expected_result)
+
+
+    @given(df=dataframes(
+        [
+            column(
+                "col_a",
+                strategy=st.integers(min_value=1, max_value=10),
+                allow_null=True,
+            ),
+            column(
+                "col_b",
+                strategy=st.integers(min_value=1, max_value=10),
+                allow_null=True,
+            ),
+        ],
+        max_size=20,
+        lazy=True,
+    ))
+    def test_nested_complex_expression_other_side(self, df):
+        data = pa.PolarsData(df, "col_a")
+        case_check_expr = CaseCheckExpression(
+            check_case=CheckCases.CONDITION,
+            expressions=[
+                CaseCheckExpression(
+                    check_case=CheckCases.CONJUNCTION,
+                    expressions=[
+                        SimpleCheckExpression(command="lt", arg_values=[8]),
+                        SimpleCheckExpression(command="is_not_null", subject=["col_a"]),
+                    ],
+                ),
+                SimpleCheckExpression(command="gt", subject=["col_b"], arg_values=[5]),
+            ],
+        )
+        result = df.select(create_complex_expression(data, case_check_expr)).collect()
+        # Expected result
+        expected_result = df.select(
+            pl.when(pl.col("col_a").lt(8).and_(pl.col("col_a").is_not_null())).then(
+                pl.col("col_b").gt(5))
+        ).collect()
+        assert_frame_equal(result, expected_result)
         
 
 class TestGetComplexExpression:
