@@ -64,7 +64,7 @@ def test_error_handler_lazy_true_adds_error():
 
 def test_error_handler_lazy_false_raises():
     logger = DummyLogger()
-    err = pl.PolarsError("polars fail")
-    with pytest.raises(pl.PolarsError):
+    err = pl.exceptions.PolarsError("polars fail")
+    with pytest.raises(pl.exceptions.PolarsError):
         error_handler(err, err_level="critical", lazy=False, logger=logger)
 

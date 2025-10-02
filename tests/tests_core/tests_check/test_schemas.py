@@ -113,3 +113,11 @@ def test_case_check_expression_get_args():
     ]
 
 
+def test_case_check_expression_invalid_case():
+    expression_mapper['test_command'] = 'mapped_command'
+    simple_expr = SimpleCheckExpression(command='test_command')
+    with pytest.raises(ValidationError) as exc_info:
+        CaseCheckExpression(
+            check_case='invalid_case',  # Invalid case
+            expressions=[simple_expr, simple_expr]
+        )

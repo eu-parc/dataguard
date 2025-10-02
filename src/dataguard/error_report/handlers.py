@@ -42,7 +42,7 @@ def exception_handler(
 
 
 def error_handler(
-    err: Exception | ValidationError | pl.PolarsError,
+    err: Exception | ValidationError | pl.exceptions.PolarsError,
     err_level: str,
     message: str | None = None,
     lazy: bool = True,
