@@ -2,4 +2,4 @@
 
 PREFIX='uv run'
 
-${PREFIX} pytest -s -x -vv --cov=src/ && ${PREFIX} coverage html
+${PREFIX} pytest -s -vv --cov=src/ && ${PREFIX} coverage html

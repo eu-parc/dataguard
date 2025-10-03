@@ -409,6 +409,44 @@ def test_validator_before_pandera_validation(
     (   ### INIT ###
         ## Config
         {
+            'name': 'Col unique AND not nullable but duplicates AND nullable in df + fail check',
+            'columns': [{
+                'id': 'col1',
+                'data_type': 'string',
+                'nullable': False,
+                'unique': True,
+                'required': True,
+                'checks': [
+                    {
+                        'command': 'is_in',
+                        'arg_values': ['x'],
+                        'error_level': 'warning', # Override default error level
+                    }
+                ]
+            }],
+            'ids': [],
+            'metadata': {},
+            'checks': []
+        }, 
+        ## Data
+        {'col1': ['a', 'a', None]},
+        ## Expected output 
+        {
+        'len_error_reports': 1,
+        'total_errors': [3],
+        'error_levels': ['ERROR', 'ERROR', 'WARNING'],  
+        'error_types': [
+            'SchemaErrorReason.SERIES_CONTAINS_NULLS',
+            'SchemaErrorReason.SERIES_CONTAINS_DUPLICATES',
+            'SchemaErrorReason.DATAFRAME_CHECK',
+        ],
+        'len_exceptions': 0,
+        'exception_levels': [],
+        }
+    ),  ### END ###
+    (   ### INIT ###
+        ## Config
+        {
             'name': 'Col unique at df level - falls under eager validation in pandera',
             'columns': [{
                 'id': 'col1',
@@ -868,3 +906,4 @@ def test_validator_eager_validation(input_config, input_data,):
         validator.validate(
             input_data, lazy_validation=False, collect_exceptions=False
             )
+

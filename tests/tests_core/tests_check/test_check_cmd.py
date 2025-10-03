@@ -40,7 +40,7 @@ class TestCreateSingleColumnExpression:
 
         simple_check_expr = SimpleCheckExpression(
             command=attr,
-            arg_values=[5,]
+            arg_values=[5]
         )
         # Test (<exp>, single_arg)
         result = df.select(
@@ -51,7 +51,7 @@ class TestCreateSingleColumnExpression:
         assert_frame_equal(result, expected_result)
 
     @pytest.mark.parametrize(
-            'attr, params', [ ('eq', 'ac'), ('is_in', ('ac', 'ad'))],
+            'attr, params', [ ('eq', 'ac')],
             )
     @given(df=dataframes(
             [
@@ -73,6 +73,31 @@ class TestCreateSingleColumnExpression:
         simple_check_expr = SimpleCheckExpression(
             command=attr,
             arg_values=[params]
+        )
+
+    @pytest.mark.parametrize(
+            'attr, params', [('is_in', ('ac', 'ad'))],
+            )
+    @given(df=dataframes(
+            [
+                column(
+                    'col_a',  
+                     strategy=st.text(
+                         alphabet=['a', 'b', 'c']
+                         ),	
+                    allow_null=True
+                       ),
+            ],
+            min_size=5,
+            max_size=20,
+            lazy=True,
+        ))
+    def test_single_arg_list_of_str(self, df, attr, params):
+        data = pa.PolarsData(df, 'col_a')
+
+        simple_check_expr = SimpleCheckExpression(
+            command=attr,
+            arg_values=params
         )
 
         # Test (<exp>, single_arg)
