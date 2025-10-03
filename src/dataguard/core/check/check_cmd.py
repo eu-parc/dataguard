@@ -34,10 +34,12 @@ def create_single_expression(
     if arg_values := simple_check_expr.arg_values:
         if len(arg_values) == 1:
             exp_arg = arg_values[0]
+            if simple_check_expr.command == 'is_in':
+                exp_arg = [exp_arg]
         # Due to Polars API, eq needs a Series for multiple values
         # https://github.com/pola-rs/polars/pull/22178
         # https://github.com/pola-rs/polars/issues/22149
-        elif simple_check_expr.command == 'eq':
+        elif simple_check_expr.command == 'eq' and len(arg_values) > 1:
             exp_arg = pl.Series(values=arg_values)
         else:
             exp_arg = arg_values
