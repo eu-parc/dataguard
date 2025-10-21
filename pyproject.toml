@@ -1,6 +1,6 @@
 [project]
 name = "dataguard"
-version = "0.4.2"
+version = "0.4.3"
 description = "A framework-agnostic data validation library for ensuring data quality and integrity"
 readme = "README.md"
 authors = [

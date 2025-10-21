@@ -84,11 +84,7 @@ def pandera_schema_errors_handler(
     if not lazy:
         raise err
 
-    idx_columns = (
-        getattr(err.schema, 'unique', [])
-        if not getattr(err.schema, 'unique', None)
-        else []
-    )
+    idx_columns = getattr(err.schema, 'unique', [])
 
     errors = []
     if getattr(err, 'schema_errors', None):
@@ -126,11 +122,7 @@ def parse_schema_error(
     return DFErrorSchema(
         type=str(schema_error.reason_code),
         message=str(schema_error),
-        level=(
-            schema_error.check.name
-            if getattr(schema_error.check, 'name', None)
-            else error_level
-        ),
+        level=getattr(schema_error.check, 'name', error_level),
         title=(
             schema_error.check.title
             if isinstance(schema_error.check.title, str)
