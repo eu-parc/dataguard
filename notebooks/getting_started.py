@@ -53,6 +53,6 @@ validator.validate(df_age)
 
 from dataguard import ErrorCollector
 
-ErrorCollector().get_errors()
+print(ErrorCollector().get_errors().model_dump_json(indent=3))
 
-ErrorCollector().get_errors().error_reports[0].errors[1]
+print(ErrorCollector().get_errors().error_reports[0].errors[1].model_dump_json(indent=3))

@@ -44,55 +44,6 @@ It can be one of:
 'is_not_null'
 ```
 
-or a user-defined function.
-
-### Tailor-made check functions
-
-Users can also define their own verification functions. The only requirement is to follow the same signature pattern below.
-
-`data` always receives an object that has a `.lazyframe` (a polar `LazyFrame`) and `.key`, which is the name of the column to be validated.
-
-Finally, it must return a polar `LazyFrame` with a binary column.
-
-```py title="getting_started.py" linenums="4" hl_lines="1"
---8<-- "notebooks/checks.py:4:9"
-```
-
-Let's use the above function to perform the same check we did before for the `age` column. We'll also use other fields to understand how they modify the report output.
-
-
-```py title="getting_started.py" linenums="9" hl_lines="12-16 57"
---8<-- "notebooks/checks.py:9:44"
-
-#{
-#  "error_reports": [
-#    {
-#      "name": "Age must be not null, grater than or equal to 0 and less than 150",
-#      "errors": [
-#        {
-#          "type": "SchemaErrorReason.SERIES_CONTAINS_NULLS",
-#          "message": "non-nullable column 'age' contains null values",
-#          "level": "error",
-#          "title": "Not_Nullable",
-#          "traceback": null
-#        },
-#        {
-#          "type": "SchemaErrorReason.DATAFRAME_CHECK",
-#          "message": "Column 'age' failed validator number 0: <Check warning: Age must be between 0 (inclusive) and 150 (exclusive)> failure case examples: [{'age': -5}, {'age': 150}]",
-#          "level": "warning",
-#          "title": "Tailor-made function check: is_between",
-#          "traceback": null
-#        }
-#      ],
-#      "total_errors": 2,
-#      "id": "1351fbab-6dbd-424c-a349-74d601518d5c"
-#    }
-#  ],
-#  "exceptions": []
-#}
-```
-Instead of creating two separate checks, we implemented our own function as a single test. Notice that instead of **3** errors being collected, we now only have **2**, meaning that even though the same validations are performed, the report output is different.
-
 
 ## Complex check expression
 
@@ -106,34 +57,34 @@ We can combine simple expressions to create complex ones using **check cases**. 
 
 Let's perform the same check we did before for the `age` column but combine the checks into a `conjunction` case.
 
-```py title="getting_started.py" linenums="49" hl_lines="12-21"
---8<-- "notebooks/checks.py:49:78"
+```py title="checks.py" linenums="49" hl_lines="12-21 62"
+--8<-- "notebooks/checks.py:49"
 
 #{
-#  "error_reports": [
-#    {
-#      "name": "Age must be not null, grater than or equal to 0 and less than 150",
-#      "errors": [
-#        {
-#          "type": "SchemaErrorReason.SERIES_CONTAINS_NULLS",
-#          "message": "non-nullable column 'age' contains null values",
-#          "level": "error",
-#          "title": "Not_Nullable",
-#          "traceback": null
-#        },
-#        {
-#          "type": "SchemaErrorReason.DATAFRAME_CHECK",
-#          "message": "Column \'age\' failed validator number 0: <Check error: The column under validation is greater than or equal to "0" and The column under validation is less than "150"> failure case examples: [{\'age\': -5}, {\'age\': 150}]",
-#          "level": "error",
-#          "title": "Is greater than or equal to and Is less than",
-#          "traceback": null
-#        }
-#      ],
-#      "total_errors": 2,
-#      "id": "1351fbab-6dbd-424c-a349-74d601518d5c"
-#    }
-#  ],
-#  "exceptions": []
+#   "error_reports": [
+#      {
+#         "name": "Age must be not null, grater than or equal to 0 and less than 150",
+#         "errors": [
+#            {
+#               "type": "SchemaErrorReason.SERIES_CONTAINS_NULLS",
+#               "message": "non-nullable column 'age' contains null values",
+#               "level": "error",
+#               "title": "Not_Nullable",
+#               "traceback": null
+#            },
+#            {
+#               "type": "SchemaErrorReason.DATAFRAME_CHECK",
+#               "message": "Column 'age' failed validator number 0: <Check error: The column under validation is greater than or equal to \"0\" and The column under validation is less than \"150\"> failure case examples: [{'age': -5}, {'age': 150}]",
+#               "level": "error",
+#               "title": "Is greater than or equal to and Is less than",
+#               "traceback": null
+#            }
+#         ],
+#         "total_errors": 2,
+#         "id": "f7591494-0750-4757-97fe-e57ba5ed7a5b"
+#      }
+#   ],
+#   "exceptions": []
 #}
 ```
 
@@ -143,6 +94,55 @@ Complex check expressions always have the same structure and can be combined in 
 'check_case': <conjunction/disjunction/condition>
 'expressions': [<2 expressions that can be simple or another complex one>]
 ```
+
+Notice that instead of 3 errors being collected, we now only have 2, meaning that even though the same validations are performed, the report output is different.
+
+## Tailor-made check functions
+
+Users can also define their own verification functions. The only requirement is to follow the same signature pattern below.
+
+`data` always receives an object that has a `.lazyframe` (a polar `LazyFrame`) and `.key`, which is the name of the column to be validated.
+
+Finally, it must return a polar `LazyFrame` with a binary column.
+
+```py title="checks.py" linenums="4" hl_lines="1"
+--8<-- "notebooks/checks.py:4:9"
+```
+
+Let's use the above function to perform the same check we did before for the `age` column. We'll also use other fields to understand how they modify the report output.
+
+
+```py title="checks.py" linenums="9" hl_lines="12-16 57"
+--8<-- "notebooks/checks.py:9:44"
+
+#{
+#   "error_reports": [
+#      {
+#         "name": "Age must be not null, grater than or equal to 0 and less than 150",
+#         "errors": [
+#            {
+#               "type": "SchemaErrorReason.SERIES_CONTAINS_NULLS",
+#               "message": "non-nullable column 'age' contains null values",
+#               "level": "error",
+#               "title": "Not_Nullable",
+#               "traceback": null
+#            },
+#            {
+#               "type": "SchemaErrorReason.DATAFRAME_CHECK",
+#               "message": "Column 'age' failed validator number 0: <Check warning: Age must be between 0 (inclusive) and 150 (exclusive)> failure case examples: [{'age': -5}, {'age': 150}]",
+#               "level": "warning",
+#               "title": "Tailor-made function check: is_between",
+#               "traceback": null
+#            }
+#         ],
+#         "total_errors": 2,
+#         "id": "3fcde816-4789-40d9-a4d1-34ed1674b23d"
+#      }
+#   ],
+#   "exceptions": []
+#}
+```
+Instead of creating two separate checks, we implemented our own function as a single test. Notice that instead of **3** errors being collected, we now only have **2**, meaning that even though the same validations are performed, the report output is different.
 
 ## DataFrame level expressions
 

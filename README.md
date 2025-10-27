@@ -9,7 +9,11 @@
    </a>
 <p/>
 
-## Installation (UV - https://docs.astral.sh/uv/)
+Source: https://github.com/eu-parc/dataguard  
+Documentation: https://eu-parc.github.io/dataguard/
+
+## Installation  
+To install the library for development.
 
 ### Synchronize the project dependencies
 *Commands must be executed from the project root directory.*

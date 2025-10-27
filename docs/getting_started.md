@@ -1,6 +1,6 @@
 # Getting Started
 
-## Fundamental Dataguard workflow
+## Dataguard workflow
 
 ```py title="getting_started.py" linenums="1" hl_lines="3-9 13 15"
 --8<-- "notebooks/getting_started.py:1:15"
@@ -15,7 +15,7 @@ While this example uses empty lists and an empty DataFrame for simplicity, it il
 
 ## Validating real-world constraints
 
-Consider an `age` column configuration that demonstrates DataGuard's data quality enforcement capabilities:
+Consider an `age` column configuration that demonstrates Dataguard's data quality enforcement capabilities:
 
 - **Type Safety**: Enforcing `integer` data type prevents string or float contamination
 - **Null Prevention**: `nullable: False` ensures no missing age values slip through
@@ -37,37 +37,37 @@ collected to the `ErrorCollector` under the hood.
 --8<-- "notebooks/getting_started.py:54:56"
 
 #{
-#  "error_reports": [
-#    {
-#      "name": "Age must be not null, grater than or equal to 0 and less than 150",
-#      "errors": [
-#        {
-#          "type": "SchemaErrorReason.SERIES_CONTAINS_NULLS",
-#          "message": "non-nullable column 'age' contains null values",
-#          "level": "error",
-#          "title": "Not_Nullable",
-#          "traceback": null
-#        },
-#        {
-#          "type": "SchemaErrorReason.DATAFRAME_CHECK",
-#          "message": "Column 'age' failed validator number 0: <Check error: The column under validation is greater than or equal to \"0\"> failure case examples: [{'age': -5}]",
-#          "level": "error",
-#          "title": "Is greater than or equal to",
-#          "traceback": null
-#        },
-#        {
-#          "type": "SchemaErrorReason.DATAFRAME_CHECK",
-#          "message": "Column 'age' failed validator number 1: <Check error: The column under validation is less than \"150\"> failure case examples: [{'age': 150}]",
-#          "level": "error",
-#          "title": "Is less than",
-#          "traceback": null
-#        }
-#      ],
-#      "total_errors": 3,
-#      "id": "555860cb-9598-4e68-b6e5-deb7d04aced2"
-#    }
-#  ],
-#  "exceptions": []
+#   "error_reports": [
+#      {
+#         "name": "Age must be not null, grater than or equal to 0 and less than 150",
+#         "errors": [
+#            {
+#               "type": "SchemaErrorReason.SERIES_CONTAINS_NULLS",
+#               "message": "non-nullable column 'age' contains null values",
+#               "level": "error",
+#               "title": "Not_Nullable",
+#               "traceback": null
+#            },
+#            {
+#               "type": "SchemaErrorReason.DATAFRAME_CHECK",
+#               "message": "Column 'age' failed validator number 0: <Check error: The column under validation is greater than or equal to \"0\"> failure case examples: [{'age': -5}]",
+#               "level": "error",
+#               "title": "Is greater than or equal to",
+#               "traceback": null
+#            },
+#            {
+#               "type": "SchemaErrorReason.DATAFRAME_CHECK",
+#               "message": "Column 'age' failed validator number 1: <Check error: The column under validation is less than \"150\"> failure case examples: [{'age': 150}]",
+#               "level": "error",
+#               "title": "Is less than",
+#               "traceback": null
+#            }
+#         ],
+#         "total_errors": 3,
+#         "id": "feab21d0-63be-48a1-9134-7071d9095687"
+#      }
+#   ],
+#   "exceptions": []
 #}
 ```
 
@@ -76,16 +76,20 @@ Let's deep dive into the second error `Is greater than or equal to`.
 ```py title="getting_started.py" linenums="57"
 --8<-- "notebooks/getting_started.py:57:58"
 
-#DFErrorSchema(
-# type='SchemaErrorReason.DATAFRAME_CHECK', 
-# message='Column \'age\' failed validator number 0: <Check error: The column under validation is greater than or equal to "0"> failure case examples: [{\'age\': -5}]', 
-# level=<ErrorLevel.ERROR: 'error'>, 
-# title='Is greater than or equal to', 
-# traceback=None, 
-# column_names=['age'], 
-# row_ids=[3], 
-# idx_columns=[]
-#)
+#{
+#   "type": "SchemaErrorReason.DATAFRAME_CHECK",
+#   "message": "Column 'age' failed validator number 0: <Check error: The column under validation is greater than or equal to \"0\"> failure case examples: [{'age': -5}]",
+#   "level": "error",
+#   "title": "Is greater than or equal to",
+#   "traceback": null,
+#   "column_names": [
+#      "age"
+#   ],
+#   "row_ids": [
+#      3
+#   ],
+#   "idx_columns": []
+#}
 ```
 
 The `DFErrorSchema` return provides detailed information about a specific validation error:
