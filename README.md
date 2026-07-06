@@ -16,7 +16,6 @@ Documentation: https://eu-parc.github.io/dataguard/
 To install the library for development.
 
 ### Synchronize the project dependencies
-*Commands must be executed from the project root directory.*
     
    ```bash
    $ uv sync

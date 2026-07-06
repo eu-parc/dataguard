@@ -1,6 +1,6 @@
 [project]
 name = "peh-dataguard"
-version = "0.4.5"
+version = "0.4.6"
 description = "A framework-agnostic data validation library for ensuring data quality and integrity"
 readme = "README.md"
 license = "MIT"
@@ -9,8 +9,7 @@ authors = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "pandera[polars]>=0.24.0",
-    "polars>=1.29.0",
+    "pandera[polars]>=0.32.1",
 ]
 urls = { Homepage = "https://github.com/eu-parc/dataguard", Repository = "https://github.com/eu-parc/dataguard", Documentation = "https://eu-parc.github.io/dataguard/" }
 
