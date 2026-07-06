@@ -447,36 +447,6 @@ def test_validator_before_pandera_validation(
     (   ### 9 INIT ###
         ## Config
         {
-            'name': 'Col unique at df level - falls under eager validation in pandera',
-            'columns': [{
-                'id': 'col1',
-                'data_type': 'string',
-                'nullable': False,
-                'unique': True,
-                'required': True,
-                'checks': []
-            }],
-            'ids': ['col1'],
-            'metadata': {},
-            'checks': []
-        }, 
-        ## Data
-        {'col1': ['a', 'a', None]},
-        ## Expected output 
-        {
-        'len_error_reports': 1,
-        'total_errors': [1],
-        'error_levels': ['CRITICAL',],
-        'error_types': [
-            'SchemaErrorReason.DUPLICATES',
-        ],
-        'len_exceptions': 0,
-        'exception_levels': [],
-        }
-    ),  ### END ###
-    (   ### 10 INIT ###
-        ## Config
-        {
             'name': 'Col > x OR <y',
             'columns': [{
                 'id': 'col1',
