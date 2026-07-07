@@ -30,7 +30,7 @@ To install the library for development.
 ### Synchronize the project dependencies
     
    ```bash
-   $ uv sync
+   $ uv sync --python 3.13
    ```
 
 #### Tests
