@@ -41,5 +41,6 @@ nav:
   - Getting Started: getting_started.md
   - User Guide:
       - How to create checks: how-to-create_checks.md
+      - How to filter: how-to-filter.md
   - API Reference:
       - dataguard: api.md
