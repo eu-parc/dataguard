@@ -121,3 +121,65 @@ def test_case_check_expression_invalid_case():
             check_case='invalid_case',  # Invalid case
             expressions=[simple_expr, simple_expr]
         )
+
+
+# Tests for N-ary expressions (3+ expressions)
+def test_case_check_expression_three_way_conjunction():
+    """Test CONJUNCTION with 3 expressions."""
+    expression_mapper['is_equal_to'] = 'mapped_command'
+    simple_expr = SimpleCheckExpression(command='is_equal_to')
+    case_expr = CaseCheckExpression(
+        check_case=CheckCases.CONJUNCTION,
+        expressions=[simple_expr, simple_expr, simple_expr]
+    )
+    assert case_expr.check_case == CheckCases.CONJUNCTION
+    assert len(case_expr.expressions) == 3
+    assert case_expr.get_check_title() == 'equal to and equal to and equal to'
+
+
+def test_case_check_expression_three_way_disjunction():
+    """Test DISJUNCTION with 3 expressions."""
+    expression_mapper['is_equal_to'] = 'mapped_command'
+    simple_expr = SimpleCheckExpression(command='is_equal_to')
+    case_expr = CaseCheckExpression(
+        check_case=CheckCases.DISJUNCTION,
+        expressions=[simple_expr, simple_expr, simple_expr]
+    )
+    assert case_expr.check_case == CheckCases.DISJUNCTION
+    assert len(case_expr.expressions) == 3
+    assert case_expr.get_check_title() == 'equal to or equal to or equal to'
+
+
+def test_case_check_expression_four_way_conjunction():
+    """Test CONJUNCTION with 4 expressions."""
+    expression_mapper['is_equal_to'] = 'mapped_command'
+    simple_expr = SimpleCheckExpression(command='is_equal_to')
+    case_expr = CaseCheckExpression(
+        check_case=CheckCases.CONJUNCTION,
+        expressions=[simple_expr, simple_expr, simple_expr, simple_expr]
+    )
+    assert len(case_expr.expressions) == 4
+    assert case_expr.get_check_title() == 'equal to and equal to and equal to and equal to'
+
+
+def test_case_check_expression_condition_with_three_expressions_invalid():
+    """Test that CONDITION with 3 expressions raises ValidationError."""
+    expression_mapper['is_equal_to'] = 'mapped_command'
+    simple_expr = SimpleCheckExpression(command='is_equal_to')
+    with pytest.raises(ValidationError) as exc_info:
+        CaseCheckExpression(
+            check_case=CheckCases.CONDITION,
+            expressions=[simple_expr, simple_expr, simple_expr]
+        )
+    assert 'CONDITION check case requires exactly 2 expressions' in str(exc_info.value)
+
+
+def test_case_check_expression_condition_with_one_expression_invalid():
+    """Test that CONDITION with 1 expression raises ValidationError."""
+    expression_mapper['is_equal_to'] = 'mapped_command'
+    simple_expr = SimpleCheckExpression(command='is_equal_to')
+    with pytest.raises(ValidationError):
+        CaseCheckExpression(
+            check_case=CheckCases.CONDITION,
+            expressions=[simple_expr]
+        )

@@ -70,28 +70,42 @@ def get_single_expression(simple_check_expr: SimpleCheckExpression) -> CheckFn:
 def create_complex_expression(
     data, case_check_expr: CaseCheckExpression
 ) -> pl.Expr:
-    if hasattr(case_check_expr.expressions[0], 'check_case'):
-        exp_1 = create_complex_expression(data, case_check_expr.expressions[0])
+    # Resolve first expression as seed
+    first_expr = case_check_expr.expressions[0]
+    if hasattr(first_expr, 'check_case'):
+        result = create_complex_expression(data, first_expr)
     else:
-        exp_1 = create_single_expression(data, case_check_expr.expressions[0])
+        result = create_single_expression(data, first_expr)
 
-    if hasattr(case_check_expr.expressions[1], 'check_case'):
-        exp_2 = create_complex_expression(data, case_check_expr.expressions[1])
-    else:
-        exp_2 = create_single_expression(data, case_check_expr.expressions[1])
+    # For CONDITION with exactly 2 expressions, handle specially
+    if case_check_expr.check_case == CheckCases.CONDITION:
+        # CONDITION is guaranteed to have exactly 2 expressions by validator
+        second_expr = case_check_expr.expressions[1]
+        if hasattr(second_expr, 'check_case'):
+            exp_2 = create_complex_expression(data, second_expr)
+        else:
+            exp_2 = create_single_expression(data, second_expr)
+        return pl.when(result).then(exp_2)
 
-    match case_check_expr.check_case:
-        case CheckCases.CONDITION:
-            return pl.when(exp_1).then(exp_2)
-        case CheckCases.CONJUNCTION:
-            return exp_1.and_(exp_2)
-        case CheckCases.DISJUNCTION:
-            return exp_1.or_(exp_2)
-        case _:  # pragma: no cover
-            # This is unreachable due to pydantic validation
-            raise ValueError(
-                f'Invalid check_case: {case_check_expr.check_case}'
-            )
+    # For CONJUNCTION and DISJUNCTION, fold over all remaining expressions
+    for expr in case_check_expr.expressions[1:]:
+        if hasattr(expr, 'check_case'):
+            current = create_complex_expression(data, expr)
+        else:
+            current = create_single_expression(data, expr)
+
+        match case_check_expr.check_case:
+            case CheckCases.CONJUNCTION:
+                result = result.and_(current)
+            case CheckCases.DISJUNCTION:
+                result = result.or_(current)
+            case _:  # pragma: no cover
+                # This is unreachable due to pydantic validation
+                raise ValueError(
+                    f'Invalid check_case: {case_check_expr.check_case}'
+                )
+
+    return result
 
 
 def get_complex_expression(case_check_expr: CaseCheckExpression) -> CheckFn:

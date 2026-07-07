@@ -914,3 +914,136 @@ class TestGetCheckFn:
             pl.when(pl.col("col_b").gt(5)).then(pl.col("col_a").lt(8))
         ).collect()
         assert_frame_equal(result, expected_result)
+
+
+# Tests for N-ary expressions (3+ expressions)
+class TestCreateComplexExpressionNAry:
+    """Tests for evaluating n-ary (3+) CONJUNCTION and DISJUNCTION expressions."""
+
+    @given(df=dataframes(
+        [
+            column(
+                "col_a",
+                strategy=st.integers(min_value=1, max_value=10),
+                allow_null=True,
+            ),
+        ],
+        max_size=20,
+        lazy=True,
+    ))
+    def test_create_three_way_conjunction(self, df):
+        """Test 3-way CONJUNCTION: col_a > 2 AND col_a < 8 AND col_a != 5"""
+        data = pa.PolarsData(df, "col_a")
+        case_check_expr = CaseCheckExpression(
+            check_case=CheckCases.CONJUNCTION,
+            expressions=[
+                SimpleCheckExpression(command="gt", arg_values=[2]),
+                SimpleCheckExpression(command="lt", arg_values=[8]),
+                SimpleCheckExpression(command="ne", arg_values=[5]),
+            ],
+        )
+        result = df.select(create_complex_expression(data, case_check_expr)).collect()
+        # Expected: (col_a > 2) AND (col_a < 8) AND (col_a != 5)
+        expected_result = df.select(
+            pl.col("col_a").gt(2).and_(pl.col("col_a").lt(8)).and_(pl.col("col_a").ne(5))
+        ).collect()
+        assert_frame_equal(result, expected_result)
+
+    @given(df=dataframes(
+        [
+            column(
+                "col_a",
+                strategy=st.integers(min_value=1, max_value=10),
+                allow_null=True,
+            ),
+        ],
+        max_size=20,
+        lazy=True,
+    ))
+    def test_create_three_way_disjunction(self, df):
+        """Test 3-way DISJUNCTION: col_a < 3 OR col_a > 7 OR col_a == 5"""
+        data = pa.PolarsData(df, "col_a")
+        case_check_expr = CaseCheckExpression(
+            check_case=CheckCases.DISJUNCTION,
+            expressions=[
+                SimpleCheckExpression(command="lt", arg_values=[3]),
+                SimpleCheckExpression(command="gt", arg_values=[7]),
+                SimpleCheckExpression(command="eq", arg_values=[5]),
+            ],
+        )
+        result = df.select(create_complex_expression(data, case_check_expr)).collect()
+        # Expected: (col_a < 3) OR (col_a > 7) OR (col_a == 5)
+        expected_result = df.select(
+            pl.col("col_a").lt(3).or_(pl.col("col_a").gt(7)).or_(pl.col("col_a").eq(5))
+        ).collect()
+        assert_frame_equal(result, expected_result)
+
+    @given(df=dataframes(
+        [
+            column(
+                "col_a",
+                strategy=st.integers(min_value=1, max_value=10),
+                allow_null=True,
+            ),
+        ],
+        max_size=20,
+        lazy=True,
+    ))
+    def test_create_four_way_conjunction(self, df):
+        """Test 4-way CONJUNCTION: col_a > 2 AND col_a < 8 AND col_a != 5 AND col_a != 3"""
+        data = pa.PolarsData(df, "col_a")
+        case_check_expr = CaseCheckExpression(
+            check_case=CheckCases.CONJUNCTION,
+            expressions=[
+                SimpleCheckExpression(command="gt", arg_values=[2]),
+                SimpleCheckExpression(command="lt", arg_values=[8]),
+                SimpleCheckExpression(command="ne", arg_values=[5]),
+                SimpleCheckExpression(command="ne", arg_values=[3]),
+            ],
+        )
+        result = df.select(create_complex_expression(data, case_check_expr)).collect()
+        # Expected: (col_a > 2) AND (col_a < 8) AND (col_a != 5) AND (col_a != 3)
+        expected_result = df.select(
+            pl.col("col_a").gt(2)
+            .and_(pl.col("col_a").lt(8))
+            .and_(pl.col("col_a").ne(5))
+            .and_(pl.col("col_a").ne(3))
+        ).collect()
+        assert_frame_equal(result, expected_result)
+
+    @given(df=dataframes(
+        [
+            column(
+                "col_a",
+                strategy=st.integers(min_value=1, max_value=10),
+                allow_null=True,
+            ),
+        ],
+        max_size=20,
+        lazy=True,
+    ))
+    def test_create_nested_conjunction_disjunction(self, df):
+        """Test nested expressions: (col_a > 2 AND col_a < 8) OR col_a == 1"""
+        data = pa.PolarsData(df, "col_a")
+        # Inner CONJUNCTION: col_a > 2 AND col_a < 8
+        inner_conj = CaseCheckExpression(
+            check_case=CheckCases.CONJUNCTION,
+            expressions=[
+                SimpleCheckExpression(command="gt", arg_values=[2]),
+                SimpleCheckExpression(command="lt", arg_values=[8]),
+            ],
+        )
+        # Outer DISJUNCTION: inner_conj OR col_a == 1
+        case_check_expr = CaseCheckExpression(
+            check_case=CheckCases.DISJUNCTION,
+            expressions=[
+                inner_conj,
+                SimpleCheckExpression(command="eq", arg_values=[1]),
+            ],
+        )
+        result = df.select(create_complex_expression(data, case_check_expr)).collect()
+        # Expected: ((col_a > 2) AND (col_a < 8)) OR (col_a == 1)
+        expected_result = df.select(
+            pl.col("col_a").gt(2).and_(pl.col("col_a").lt(8)).or_(pl.col("col_a").eq(1))
+        ).collect()
+        assert_frame_equal(result, expected_result)

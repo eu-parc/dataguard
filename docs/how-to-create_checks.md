@@ -92,10 +92,31 @@ Complex check expressions always have the same structure and can be combined in 
 
 ```
 'check_case': <conjunction/disjunction/condition>
-'expressions': [<2 expressions that can be simple or another complex one>]
+'expressions': [<2 or more expressions that can be simple or another complex one>]
 ```
 
 Notice that instead of 3 errors being collected, we now only have 2, meaning that even though the same validations are performed, the report output is different.
+
+### N-ary Expressions
+
+As of version 0.5.0, `conjunction` and `disjunction` cases support **two or more expressions** (n >= 2), allowing you to evaluate multiple conditions with `all` (conjunction) or `any` (disjunction) logic.
+
+**Example: 3-way conjunction**
+
+Check that age is not null, greater than or equal to 0, AND less than 150:
+
+```py
+{
+    'check_case': 'conjunction',
+    'expressions': [
+        {'command': 'is_not_null'},
+        {'command': 'is_greater_than_or_equal_to', 'arg_values': [0]},
+        {'command': 'is_less_than', 'arg_values': [150]}
+    ]
+}
+```
+
+Note: The `condition` case continues to require exactly 2 expressions (for "when X, then Y" semantics).
 
 ## Tailor-made check functions
 

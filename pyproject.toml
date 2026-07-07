@@ -1,6 +1,6 @@
 [project]
 name = "peh-dataguard"
-version = "0.4.6"
+version = "0.5.0"
 description = "A framework-agnostic data validation library for ensuring data quality and integrity"
 readme = "README.md"
 license = "MIT"
