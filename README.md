@@ -12,6 +12,17 @@
 Source: https://github.com/eu-parc/dataguard  
 Documentation: https://eu-parc.github.io/dataguard/
 
+## Features
+
+- **Flexible validation checks**: Define simple checks using built-in commands (equality, comparisons, nullability, etc.)
+- **Complex check expressions**: Combine multiple checks with conjunctions (`and`), disjunctions (`or`), and conditionals (`when-then`)
+- **N-ary expressions**: Support for 2 or more expressions in conjunction/disjunction operations (v0.5.0+)
+- **Nested expressions**: Compose complex conditions by nesting check expressions
+- **Custom validation functions**: Define your own validation logic following the framework's signature pattern
+- **DataFrame-level checks**: Apply validations across entire dataframes or specific column groups
+- **Detailed error reporting**: Collect and format validation errors with custom messages and severity levels
+- **Polars support**: Built on Polars for efficient data validation at scale
+
 ## Installation  
 To install the library for development.
 

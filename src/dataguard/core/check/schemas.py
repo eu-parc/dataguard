@@ -4,7 +4,7 @@ from typing import Any, Callable
 
 import pandera.polars as pa
 import polars as pl
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 from dataguard.core.utils.enums import CheckCases
 from dataguard.core.utils.mappers import (
@@ -75,8 +75,23 @@ class CaseCheckExpression(BaseModel):
 
     check_case: CheckCases
     expressions: list[SimpleCheckExpression | CaseCheckExpression] = Field(
-        min_length=2, max_length=2
+        min_length=2
     )
+
+    @model_validator(mode='after')
+    def validate_condition_length(self) -> CaseCheckExpression:
+        """Ensure CONDITION case has exactly 2 expressions."""
+        condition_expr_count = 2
+        expr_count = len(self.expressions)
+        if (
+            self.check_case == CheckCases.CONDITION
+            and expr_count != condition_expr_count
+        ):
+            raise ValueError(
+                f'CONDITION check case requires exactly '
+                f'{condition_expr_count} expressions, got {expr_count}'
+            )
+        return self
 
     def get_check_title(self) -> str:
         match self.check_case:
