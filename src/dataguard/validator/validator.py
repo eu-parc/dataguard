@@ -176,7 +176,7 @@ class Validator:
                 collect_exceptions is False.
 
         """  # noqa: E501
-        try:
+        try:  # noqa: PLW0717
             if not getattr(self, 'df_schema', None):
                 logger.error('DataFrame schema is not defined')
                 return

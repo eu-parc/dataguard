@@ -14,6 +14,19 @@ from dataguard.core.models.schemas import (
 from dataguard.core.utils.enums import ErrorLevel
 
 
+def parse_filter(
+    config: Mapping[str, str | Sequence | Mapping],
+) -> tuple[str, CaseCheckExpression | SimpleCheckExpression, list[str] | None]:
+    name = config['name']
+    filter_config = config['filter']
+    columns = list(config['select']) if 'select' in config else None
+    try:
+        expr = CaseCheckExpression.model_validate(filter_config)
+    except ValidationError:
+        expr = SimpleCheckExpression.model_validate(filter_config)
+    return name, expr, columns
+
+
 def get_df_schema(
     config_input: Mapping[str, str | Sequence | Mapping],
 ) -> DFSchema:
