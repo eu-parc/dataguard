@@ -1,6 +1,47 @@
 # Getting Started
 
-## Dataguard workflow
+## Installation
+
+The PyPI distribution is named `peh-dataguard`, while the Python import
+name is `dataguard`.
+
+### Install with `uv`
+
+For a `uv`-managed project, add DataGuard as a dependency:
+
+```bash
+uv add peh-dataguard
+```
+
+To install it into the current environment without changing a project file:
+
+```bash
+uv pip install peh-dataguard
+```
+
+### Install with `pip`
+
+Create and activate a virtual environment, then install the package:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install peh-dataguard
+```
+
+On Windows PowerShell, activate the environment with
+`.venv\Scripts\Activate.ps1` instead of `source`.
+
+### Verify the installation
+
+```bash
+python -c "from dataguard import Filter, Validator; print('DataGuard is ready')"
+```
+
+For a `uv`-managed project, use `uv run python ...` instead of `python ...`.
+
+## DataGuard workflow
 
 ```py title="getting_started.py" linenums="1" hl_lines="3-9 13 15"
 --8<-- "notebooks/getting_started.py:1:15"
@@ -15,7 +56,7 @@ While this example uses empty lists and an empty DataFrame for simplicity, it il
 
 ## Validating real-world constraints
 
-Consider an `age` column configuration that demonstrates Dataguard's data quality enforcement capabilities:
+Consider an `age` column configuration that demonstrates DataGuard's data quality enforcement capabilities:
 
 - **Type Safety**: Enforcing `integer` data type prevents string or float contamination
 - **Null Prevention**: `nullable: False` ensures no missing age values slip through

@@ -2,8 +2,11 @@ site_name: DataGuard
 repo_url: https://github.com/eu-parc/dataguard
 repo_name: eu-parc/dataguard
 edit_uri: edit/master/docs/
+# Zensical intentionally reads this MkDocs-compatible configuration.
+# The classic variant preserves the existing Material-style presentation.
 theme:
   name: material
+  variant: classic
 
 plugins:
   - search
@@ -39,6 +42,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Getting Started: getting_started.md
+  - Changelog: changelog.md
   - User Guide:
       - How to create checks: how-to-create_checks.md
       - How to filter: how-to-filter.md
