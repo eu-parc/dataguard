@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-PREFIX='uv run'
+PREFIX='uv run --no-default-groups --group docs'
 
-${PREFIX} mkdocs gh-deploy --force
+${PREFIX} zensical build --clean --strict

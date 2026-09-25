@@ -1,16 +1,19 @@
 # DataGuard
 
 <p align="center">
-   <a href="https://github.com/eu-parc/dataguard/actions?query=workflow%3ACI" targe>
+   <a href="https://github.com/eu-parc/dataguard/actions?query=workflow%3ACI" target="_blank" rel="noopener">
     <img src="https://github.com/eu-parc/dataguard/actions/workflows/ci.yml/badge.svg" alt="CI">
    </a>
-   <a href="https://github.com/eu-parc/dataguard/actions?query=workflow%3ADOCS" targe>
-    <img src="https://github.com/eu-parc/dataguard/actions/workflows/docs.yml/badge.svg" alt="CI">
+   <a href="https://github.com/eu-parc/dataguard/actions?query=workflow%3ADOCS" target="_blank" rel="noopener">
+    <img src="https://github.com/eu-parc/dataguard/actions/workflows/docs.yml/badge.svg" alt="Documentation build">
    </a>
-<p/>
+</p>
 
-Source: https://github.com/eu-parc/dataguard  
-Documentation: https://eu-parc.github.io/dataguard/
+- Source: [GitHub repository](https://github.com/eu-parc/dataguard)
+- Documentation: [DataGuard documentation](https://eu-parc.github.io/dataguard/)
+- Changelog: [CHANGELOG.md](https://github.com/eu-parc/dataguard/blob/master/CHANGELOG.md)
+
+DataGuard supports Python 3.10 and later.
 
 ## Features
 
@@ -24,29 +27,67 @@ Documentation: https://eu-parc.github.io/dataguard/
 - **Detailed error reporting**: Collect and format validation errors with custom messages and severity levels
 - **Polars support**: Built on Polars for efficient data processing at scale
 
-## Installation  
-To install the library for development.
+## Installation
 
-### Synchronize the project dependencies
-    
-   ```bash
-   $ uv sync
-   ```
+The package is published on PyPI as `peh-dataguard` and imported as
+`dataguard`.
 
-#### Tests
+### Install with uv
 
-   ```bash
-   $ make test
-   ```
+For a `uv`-managed project, add DataGuard as a dependency:
 
-#### Format
+```bash
+uv add peh-dataguard
+```
 
-   ```bash
-   $ make format
-   ```
+To install it into the current environment without changing a project file:
 
-#### lint
+```bash
+uv pip install peh-dataguard
+```
 
-   ```bash
-   $ make lint
-   ```
+### Install with pip
+
+Create and activate a virtual environment, then install the package:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install peh-dataguard
+```
+
+On Windows PowerShell, activate the environment with
+`.venv\Scripts\Activate.ps1` instead of `source`.
+
+Verify that the public API can be imported:
+
+```bash
+python -c "from dataguard import Filter, Validator; print('DataGuard is ready')"
+```
+
+For a `uv`-managed project, use `uv run python ...` instead of `python ...`.
+
+## Development
+
+For a source checkout, install the development dependencies with Python 3.14:
+
+```bash
+git clone https://github.com/eu-parc/dataguard.git
+cd dataguard
+uv sync --python 3.14
+```
+
+Run the project checks with:
+
+```bash
+make test
+make lint
+make format
+```
+
+To preview the Zensical documentation locally:
+
+```bash
+make serve
+```

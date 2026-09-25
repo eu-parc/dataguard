@@ -1,6 +1,6 @@
 [project]
 name = "peh-dataguard"
-version = "0.6.0"
+version = "0.6.1"
 description = "A framework-agnostic data validation library for ensuring data quality and integrity"
 readme = "README.md"
 license = "MIT"
@@ -8,32 +8,35 @@ authors = [
     { name = "Caio Mescouto Terra de Souza", email = "caio.mescouto@vito.be" }
 ]
 requires-python = ">=3.10"
+# Upper bounds intentionally block next-minor releases; widen them after validation.
 dependencies = [
-    "pandera[polars]>=0.32.1",
+    "pandera[polars]>=0.32.1,<0.34",
+    "polars>=1.42.1,<1.45",
+    "pydantic>=2.13.4,<2.14",
 ]
 urls = { Homepage = "https://github.com/eu-parc/dataguard", Repository = "https://github.com/eu-parc/dataguard", Documentation = "https://eu-parc.github.io/dataguard/" }
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.32.4,<1.33"]
 build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
-    "hypothesis>=6.131.14",
-    "ipykernel>=6.29.5",
-    "pytest>=8.3.5",
-    "pytest-cov>=6.1.1",
-    "ruff>=0.11.8",
+    "hypothesis>=6.131.14,<6.169",
+    "ipykernel>=6.29.5,<7.4",
+    "pytest>=8.3.5,<9.2",
+    "pytest-cov>=6.1.1,<7.2",
+    "ruff>=0.11.8,<0.17",
 ]
 docs = [
-    "mkdocs-material>=9.6.14",
-    "mkdocstrings[python]>=0.29.1",
+    "zensical>=0.0.65,<0.1",
+    "mkdocstrings-python>=2.0.9,<2.1",
 ]
 
 [tool.ruff]
 line-length = 79
 src = ["src/dataguard"]
-extend-exclude = ["tests", "scripts", "notebooks", "data"]
+extend-exclude = ["tests", "scripts", "notebooks", "data", "docs"]
 target-version = "py310"
 
 [tool.ruff.lint]
