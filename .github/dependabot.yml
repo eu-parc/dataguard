@@ -1,0 +1,33 @@
+version: 2
+
+updates:
+  # Python dependencies: pyproject.toml and uv.lock are updated
+  # together in a single grouped PR.
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    cooldown:
+      default-days: 3
+    commit-message:
+      prefix: "deps"
+    groups:
+      python-dependencies:
+        patterns:
+          - "*"
+
+  # GitHub Actions referenced from .github/workflows.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    cooldown:
+      default-days: 3
+    commit-message:
+      prefix: "ci"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
