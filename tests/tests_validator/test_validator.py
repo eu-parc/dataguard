@@ -19,7 +19,7 @@ def error_collector():
 def fake_check_fn():
     def check_fn(data, arg_values=None, arg_columns=None, subject=None):
         return data.lazyframe.select(
-            pl.col(data.key).is_in(arg_values)
+            pl.col(data.key).is_in(pl.Series(arg_values, dtype=pl.Float64))
         )
 
     return check_fn

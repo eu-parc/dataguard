@@ -4,7 +4,7 @@
 
 - This is a single Python package, not a monorepo. Runtime code is under `src/dataguard`; tests are under `tests`; documentation is under `docs`; documentation examples are sourced from `notebooks`.
 - The distribution is named `peh-dataguard`, but the import name is `dataguard`. The public exports are `Validator`, `Filter`, and `ErrorCollector` from `src/dataguard/__init__.py`.
-- Python `>=3.10` is supported; CI tests Python `3.10` through `3.14`. Ruff targets Python 3.10, so do not use syntax or APIs newer than the minimum unless the project metadata is changed.
+- Python `>=3.11, <3.16` is supported; CI tests Python `3.11` through `3.15`. Ruff targets Python 3.11, so do not use syntax or APIs newer than the minimum unless the project metadata is changed.
 - The main flow is configuration mapping -> recursive Pydantic expression/schema models -> Polars expression compilation -> Pandera validation for `Validator` or direct Polars filtering for `Filter`. The relevant wiring is in `config/config_reader.py`, `core/check/`, `core/filter/`, and `core/models/`.
 - `CaseCheckExpression` is recursive: `conjunction` and `disjunction` require at least two expressions, while `condition` requires exactly two. Built-in check names are mapped to Polars methods; custom callable checks are supported for validation, not filtering.
 - `Validator` normally collects Polars/Pandera/configuration errors in the shared `ErrorCollector`; pass `collect_exceptions=False` when an exception should propagate. `Filter.apply` preserves `DataFrame` versus `LazyFrame` input type.
