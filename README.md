@@ -13,7 +13,7 @@
 - Documentation: [DataGuard documentation](https://eu-parc.github.io/dataguard/)
 - Changelog: [CHANGELOG.md](https://github.com/eu-parc/dataguard/blob/master/CHANGELOG.md)
 
-DataGuard supports Python 3.10 and later.
+DataGuard supports Python 3.11 through 3.15.
 
 ## Features
 
@@ -70,12 +70,12 @@ For a `uv`-managed project, use `uv run python ...` instead of `python ...`.
 
 ## Development
 
-For a source checkout, install the development dependencies with Python 3.14:
+For a source checkout, install the development dependencies with Python 3.15:
 
 ```bash
 git clone https://github.com/eu-parc/dataguard.git
 cd dataguard
-uv sync --python 3.14
+uv sync --python 3.15
 ```
 
 Run the project checks with:
